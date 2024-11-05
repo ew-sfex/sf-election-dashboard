@@ -97,6 +97,7 @@ function App() {
   const [races, setRaces] = useState<any[]>([]);
   const [lastUpdated, setLastUpdated] = useState<string>("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Helper function to format date string
   const formatDateTime = (dateStr: string) => {
@@ -109,6 +110,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         console.log('Fetching data...');
         const response = await axios.get(ELECTION_DATA_URL);
         const parser = new XMLParser({
@@ -122,15 +124,18 @@ function App() {
         console.log('Contest list:', contestList);
 
         const view = getViewType();
-        const filteredRaces = filterRacesByView(contestList, view);
-        const sortedRaces = sortRaces(filteredRaces);
+        const filteredByType = filterRacesByView(contestList, view);
+        const filteredByRace = filterRaces(filteredByType);
+        const sortedRaces = sortRaces(filteredByRace);
         setRaces(sortedRaces);
 
         const timestamp = result.Report.Title.Report.Textbox9;
         setLastUpdated(new Date(timestamp).toLocaleString());
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
         setError('Failed to fetch election data');
+        setLoading(false);
       }
     };
 
@@ -139,6 +144,14 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-xl text-red-600">{error}</div>
+      </div>
+    );
+  }
+  
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
