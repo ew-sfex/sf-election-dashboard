@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
-// Add these constants at the top
 const ELECTION_DATA_URL = 'https://sfelections.org/results/20241105/data/summary.xml';
 const REFRESH_INTERVAL = 15000; // 15 seconds
 
-// View type handling
 type ViewType = 'all' | 'mayor' | 'measures' | 'supervisors';
 
 const getViewType = (): ViewType => {
@@ -54,7 +52,6 @@ const raceOrder = [
   "BART BOARD OF DIRECTORS, DISTRICT 9"
 ];
 
-// Add this function before your sortRaces function:
 const filterRaces = (races: any[]) => {
   return races.filter(race => {
     // Include races in our explicit order list
