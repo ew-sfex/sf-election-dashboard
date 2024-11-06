@@ -167,10 +167,11 @@ function App() {
     );
   }
   
-  if (loading) {
+  if (loading || races.length === 0) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl">Loading election results...</div>
+        <div className="text-xl text-gray-700">Waiting for first election results...</div>
+        <div className="mt-2 text-sm text-gray-500">Results expected after 8:00 PM</div>
       </div>
     );
   }
