@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="ElectionSummaryReportRPT">
+  <Title>
+    <Report Name="Title" Textbox11="Election Summary Report" Textbox3="General Election" Textbox2="San Francisco" Textbox9="2024-11-05T15:00:40" />
+  </Title>
+  <RegistrationAndTurnout>
+    <Report Name="RegistrationAndTurnout" />
+  </RegistrationAndTurnout>
+  <ElectionSummarySubReport>
+    <Report>
+      <contestList>
+        <ContestIdGroup contestId="MAYOR">
+          <CandidateResults>
+            <Candidate name="LONDON BREED" electionDay="3490" voteByMail="6726" />
+            <Candidate name="MARK FARRELL" electionDay="4395" voteByMail="11249" />
+            <Candidate name="DANIEL LURIE" electionDay="2716" voteByMail="11418" />
+            <Candidate name="AHSHA SAFAÍ" electionDay="1060" voteByMail="10725" />
+          </CandidateResults>
+        </ContestIdGroup>
+      </contestList>
+    </Report>
+  </ElectionSummarySubReport>
+</Report>
