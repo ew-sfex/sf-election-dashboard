@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
-const ELECTION_DATA_URL = 'https://sfelections.org/results/20241105/data/summary.xml';
+// Change this line at the top:
+const ELECTION_DATA_URL = '/test_data.xml';
 const REFRESH_INTERVAL = 15000; // 15 seconds
 
 type ViewType = 'all' | 'mayor' | 'measures' | 'supervisors';
@@ -123,8 +124,22 @@ function App() {
         const contestList = result.Report.ElectionSummarySubReport.Report.contestList.ContestIdGroup;
         console.log('Contest list:', contestList);
 
+        // Convert the data into the format our app expects
+        const formattedRaces = [{
+          contestId: contestList.contestId,
+          candidates: contestList.CandidateResults.Candidate.map((candidate: any) => ({
+            name: candidate.name,
+            electionDay: parseInt(candidate.electionDay),
+            voteByMail: parseInt(candidate.voteByMail),
+            totalVotes: parseInt(candidate.electionDay) + parseInt(candidate.voteByMail),
+            percentage: ((parseInt(candidate.electionDay) + parseInt(candidate.voteByMail)) / 
+              contestList.CandidateResults.Candidate.reduce((total: number, c: any) => 
+                total + parseInt(c.electionDay) + parseInt(c.voteByMail), 0)) * 100
+          }))
+        }];
+
         const view = getViewType();
-        const filteredByType = filterRacesByView(contestList, view);
+        const filteredByType = filterRacesByView(formattedRaces, view);
         const filteredByRace = filterRaces(filteredByType);
         const sortedRaces = sortRaces(filteredByRace);
         setRaces(sortedRaces);
