@@ -3,7 +3,7 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
 // Change this line at the top:
-const ELECTION_DATA_URL = '/test_data.xml';
+const ELECTION_DATA_URL = 'https://sfelections.org/results/20241105/data/summary.xml';
 const REFRESH_INTERVAL = 15000; // 15 seconds
 
 type ViewType = 'all' | 'mayor' | 'measures' | 'supervisors';
