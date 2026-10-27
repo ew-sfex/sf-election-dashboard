@@ -1,0 +1,47 @@
+name: Sync 2026 SF Election Results & Deploy Dashboard
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  schedule:
+    # Runs every 5 minutes on Election Night / Canvass to refresh summary.xml on GitHub Pages
+    - cron: '*/5 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: src/frontend/dashboard/package-lock.json
+
+      - name: Fetch latest 2026 SF Election Summary XML
+        run: |
+          mkdir -p src/frontend/dashboard/public/data
+          curl -fSL -m 30 \
+            -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" \
+            "https://sfelections.org/results/20261103/data/summary.xml" \
+            -o src/frontend/dashboard/public/data/summary.xml || echo "Using checked-in summary.xml fallback"
+
+      - name: Install and build frontend
+        working-directory: src/frontend/dashboard
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./src/frontend/dashboard/dist

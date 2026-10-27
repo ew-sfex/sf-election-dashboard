@@ -129,6 +129,10 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.DS_Store
+**/.DS_Store
+src/frontend/dashboard/.vite/
+
 
 # Spyder project settings
 .spyderproject
