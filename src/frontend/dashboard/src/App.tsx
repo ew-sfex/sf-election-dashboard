@@ -164,25 +164,51 @@ function App() {
     };
   }, [route.demoPct]);
 
-  // Auto-resize height notification for parent article iframes
+  // Auto-resize height notification for parent BLOX/TownNews article iframes (works on all views, including when accordions open/close)
   useEffect(() => {
-    if (route.mode === 'single-race' || route.mode === 'supervisors' || route.mode === 'measures') {
-      const sendHeight = () => {
-        const height = document.documentElement.scrollHeight;
+    if (window.self === window.top) return;
+
+    const sendHeight = () => {
+      const rootEl = document.getElementById('root');
+      const height = Math.ceil(
+        Math.max(
+          rootEl ? rootEl.getBoundingClientRect().height : 0,
+          document.body ? document.body.scrollHeight : 0,
+          document.documentElement ? document.documentElement.offsetHeight : 0
+        )
+      );
+      if (height > 0) {
         window.parent?.postMessage(
           {
             type: 'sf-election-embed-resize',
             height,
+            mode: route.mode,
             races: route.raceSlugs,
           },
           '*'
         );
-      };
-      sendHeight();
-      window.addEventListener('resize', sendHeight);
-      return () => window.removeEventListener('resize', sendHeight);
+      }
+    };
+
+    sendHeight();
+    window.addEventListener('resize', sendHeight);
+
+    let observer: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== 'undefined') {
+      observer = new ResizeObserver(() => {
+        sendHeight();
+      });
+      const rootEl = document.getElementById('root') || document.body;
+      if (rootEl) {
+        observer.observe(rootEl);
+      }
     }
-  }, [route.mode, route.raceSlugs, summary]);
+
+    return () => {
+      window.removeEventListener('resize', sendHeight);
+      observer?.disconnect();
+    };
+  }, [route.mode, route.raceSlugs, summary, openSections, searchQuery]);
 
   const visibleContests = useMemo(() => {
     if (!summary) return [];
@@ -330,7 +356,12 @@ function App() {
   // ============================================================================
   if (route.mode === 'embeds') {
     const originAndPath = `${window.location.origin}${window.location.pathname}`;
+    const embedScriptUrl = `${originAndPath.endsWith('/') ? originAndPath : `${originAndPath}/`}embed.js`;
+    const demoQueryFirst = route.demoPct !== null ? `?demo=${route.demoPct}` : '';
     const demoSuffix = route.demoPct !== null ? `&demo=${route.demoPct}` : '';
+
+    const buildBloxSnippet = (srcUrl: string, initialHeight: number) =>
+      `<iframe src="${srcUrl}" width="100%" height="${initialHeight}" frameborder="0" scrolling="no" style="border:0;width:100%;overflow:hidden;"></iframe>\n<script src="${embedScriptUrl}" async></script>`;
 
     const copySnippet = (slugKey: string, snippet: string) => {
       navigator.clipboard?.writeText(snippet);
@@ -348,7 +379,14 @@ function App() {
       );
     });
 
-    const bosIframe = `<iframe src="${originAndPath}?view=supervisors${demoSuffix}" width="100%" height="920" frameborder="0" style="border:0;width:100%;"></iframe>`;
+    const fullDashboardSnippet = buildBloxSnippet(
+      `${originAndPath}${demoQueryFirst}`,
+      1800
+    );
+    const bosIframe = buildBloxSnippet(
+      `${originAndPath}?view=supervisors${demoSuffix}`,
+      920
+    );
 
     return (
       <div className="min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8">
@@ -412,33 +450,63 @@ function App() {
             </div>
           </div>
 
-          {/* Truncated Supervisors Dashboard Embed Box */}
-          <div className="bg-white rounded-lg border border-gray-200 p-4 flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <h2 className="text-base font-bold text-gray-900">
-                Truncated Board of Supervisors Dashboard (All 5 Supervisor Races)
-              </h2>
-              <p className="text-xs text-gray-500 mt-0.5">
-                URL:{' '}
-                <a
-                  href={`?view=supervisors${demoSuffix}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline text-amber-800"
-                >
-                  {originAndPath}?view=supervisors{demoSuffix}
-                </a>
-              </p>
+          {/* Full Dashboard & Truncated Supervisors Dashboard Embed Boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h2 className="text-base font-bold text-gray-900">
+                  Full Election Dashboard (All Accordion Sections)
+                </h2>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Auto-resizes in BLOX when readers open/close accordions ·{' '}
+                  <a
+                    href={`${originAndPath}${demoQueryFirst}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline text-amber-800"
+                  >
+                    Preview ↗
+                  </a>
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => copySnippet('full-dashboard', fullDashboardSnippet)}
+                className="px-3 py-1.5 rounded text-xs font-semibold bg-gray-900 text-white hover:bg-gray-800"
+              >
+                {copiedSlug === 'full-dashboard'
+                  ? 'Copied BLOX Snippet!'
+                  : 'Copy Full Dashboard Embed'}
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => copySnippet('bos-roundup', bosIframe)}
-              className="px-3 py-1.5 rounded text-xs font-semibold bg-gray-900 text-white hover:bg-gray-800"
-            >
-              {copiedSlug === 'bos-roundup'
-                ? 'Copied iframe!'
-                : 'Copy Supervisors Board <iframe>'}
-            </button>
+
+            <div className="bg-white rounded-lg border border-gray-200 p-4 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h2 className="text-base font-bold text-gray-900">
+                  Truncated Board of Supervisors Dashboard (5 Races)
+                </h2>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Auto-resizing 5-race Supervisor roundup ·{' '}
+                  <a
+                    href={`?view=supervisors${demoSuffix}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline text-amber-800"
+                  >
+                    Preview ↗
+                  </a>
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => copySnippet('bos-roundup', bosIframe)}
+                className="px-3 py-1.5 rounded text-xs font-semibold bg-gray-900 text-white hover:bg-gray-800"
+              >
+                {copiedSlug === 'bos-roundup'
+                  ? 'Copied BLOX Snippet!'
+                  : 'Copy Supervisors Board Embed'}
+              </button>
+            </div>
           </div>
 
           {/* Individual Race Embed Cards */}
@@ -446,7 +514,7 @@ function App() {
             {filteredEmbeds.map((contest) => {
               const embedUrl = `${originAndPath}?race=${contest.slug}${demoSuffix}`;
               const estHeight = Math.max(240, 140 + contest.candidates.length * 58);
-              const iframeCode = `<iframe src="${embedUrl}" width="100%" height="${estHeight}" frameborder="0" style="border:0;width:100%;"></iframe>`;
+              const iframeCode = buildBloxSnippet(embedUrl, estHeight);
 
               return (
                 <div
