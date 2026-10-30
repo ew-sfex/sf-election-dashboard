@@ -1,0 +1,3292 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="ElectionSummaryReportRPT" Name="ElectionSummaryReportRPT">
+  <Title>
+    <Report Name="Title" Textbox11="Election Summary Report" Textbox3="General Election" Textbox2="San Francisco" Textbox9="2026-11-03T23:42:18" Textbox8="City and County of San Francisco&#10;November 3, 2026 Consolidated General Election&#10;Summary Report - 4" />
+  </Title>
+  <RegistrationAndTurnout>
+    <Report Name="RegistrationAndTurnout">
+      <Tablix10>
+        <electorGroupId2_Collection>
+          <electorGroupId2 electorGroupId2="Total" ballots2="1420000" ballots3="355000" Textbox32="533714" Textbox6="0.6651502490097693">
+            <Details1 countingGroup1="Election Day" Textbox171="64000" Textbox173="0.11991441108908517" />
+            <Details1 countingGroup1="Vote by Mail" Textbox171="291000" Textbox173="0.5452358379206841" />
+          </electorGroupId2>
+        </electorGroupId2_Collection>
+      </Tablix10>
+    </Report>
+  </RegistrationAndTurnout>
+  <tabBatchIdList>
+    <TabBatchGroup_Collection>
+      <TabBatchGroup contestId="">
+        <ElectionSummarySubReport>
+          <Report Name="ElectionSummarySubReportRPT">
+            <Tablix2>
+              <Details_Collection>
+                <Details reported="Precincts Reported: 514 of 514 (100.0%)" />
+              </Details_Collection>
+            </Tablix2>
+            <contestList>
+              <ContestIdGroup_Collection>
+                <ContestIdGroup contestId="GOVERNOR   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="STEVE HILTON ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="42100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="56900" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="XAVIER BECERRA ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="49200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="248900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="298100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="355000 / 533714 " Textbox40="0.6651502490097693" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="LIEUTENANT GOVERNOR   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="GLORIA ROMERO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="15100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="48200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="63300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="FIONA MA ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="46800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="239400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="286200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="349500 / 533714 " Textbox40="0.654845104306801" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="SECRETARY OF STATE   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="DONALD P. (DON) WAGNER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="44900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="59100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="SHIRLEY N. WEBER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="47600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="241800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="289400" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="348500 / 533714 " Textbox40="0.652971441633534" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="CONTROLLER   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MALIA M. COHEN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="48900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="245600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="294500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="HERB W MORGAN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="43100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="57000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="351500 / 533714 " Textbox40="0.658592429653335" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="TREASURER   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JENNIFER HAWKS ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="43800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="57900" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ELENI KOUNALAKIS ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="48200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="246100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="294300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="352200 / 533714 " Textbox40="0.6599039935246218" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ATTORNEY GENERAL   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ROB BONTA ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="47900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="244200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="292100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MICHAEL E. GATES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="45600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="60500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="352600 / 533714 " Textbox40="0.6606534585939285" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="INSURANCE COMMISSIONER   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JANE KIM ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="36400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="164800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="201200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BEN ALLEN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="22800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="118900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="141700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="342900 / 533714 " Textbox40="0.6424789306632391" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="BOARD OF EQUALIZATION MEMBER, DISTRICT 2   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JOHN PIMENTEL ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="23100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="112400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="135500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="SALLY J. LIEBER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="33800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="164200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="198000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="333500 / 533714 " Textbox40="0.6248665015345297" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="UNITED STATES REPRESENTATIVE, DISTRICT 11   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="SCOTT WIENER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="29400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="148200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="177600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="CONNIE CHAN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="26800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="121900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="148700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 453 of 453 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="326300 / 470222 " Textbox40="0.6939275491150988" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="UNITED STATES REPRESENTATIVE, DISTRICT 15   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="CHARLES HOELTER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2180" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="7420" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="9600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="KEVIN MULLIN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="5410" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="26840" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="32250" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 61 of 61 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="41850 / 63492 " Textbox40="0.6591381591381591" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="STATE SENATOR, DISTRICT 2   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="DAMON CONNOLLY ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="TIEF GIBBS ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 1 of 1 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="0 / 0 " Textbox40="0" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="STATE ASSEMBLY MEMBER, DISTRICT 12   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JACKIE ELWARD ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ERIC LUCAN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 1 of 1 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="0 / 0 " Textbox40="0" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="STATE ASSEMBLY MEMBER, DISTRICT 17   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MATT HANEY ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="26200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="138400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="164600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MANUEL NORIS-BARRERA ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="7400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="28900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="36300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 298 of 298 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="200900 / 302455 " Textbox40="0.6642310426344414" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="STATE ASSEMBLY MEMBER, DISTRICT 18   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MIA BONTA ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ANDRE SANDFORD ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 1 of 1 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="0 / 0 " Textbox40="0" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="STATE ASSEMBLY MEMBER, DISTRICT 19   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="PHILIP LOUIS WING ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="10400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="38200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="48600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="CATHERINE STEFANI ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="18900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="94600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="113500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 214 of 214 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="162100 / 231259 " Textbox40="0.7009456929243835" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE OF THE SUPREME COURT (JOSHUA GROBAN)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="41000" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="210000" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="251000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="12500" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="54000" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="66500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="317500 / 533714 " Textbox40="0.5948878987622584" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE OF THE SUPREME COURT (KELLI M. EVANS)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="41250" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="211300" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="252550" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="12680" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="54700" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="67380" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="319930 / 533714 " Textbox40="0.5994408990582971" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 1 (MONIQUE LANGHORNE WILSON)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="41500" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="212600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="254100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="12860" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="55400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="68260" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="322360 / 533714 " Textbox40="0.6039938993543359" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 1 (CHARLES A. SMILEY)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="41750" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="213900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="255650" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13040" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="56100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="69140" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="324790 / 533714 " Textbox40="0.6085468996503746" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 1 (KATHLEEN M. BANKE)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="42000" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="215200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="257200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13220" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="56800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="70020" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="327220 / 533714 " Textbox40="0.6130998999464132" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="PRESIDING JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 2 (THERESE M. STEWART)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="42250" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="216500" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="258750" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="57500" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="70900" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="329650 / 533714 " Textbox40="0.6176529002424519" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 2 (TARA M. DESAUTELS)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="42500" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="217800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="260300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13580" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="58200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="71780" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="332080 / 533714 " Textbox40="0.6222059005384907" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 3 (IOANA PETROU)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="42750" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="219100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="261850" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13760" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="58900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="72660" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="334510 / 533714 " Textbox40="0.6267589008345293" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 3 (VICTOR A. RODRIGUEZ)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="43000" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="220400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="263400" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13940" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="59600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="73540" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="336940 / 533714 " Textbox40="0.631311901130568" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="PRESIDING JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 4 (TRACIE L. BROWN)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="43250" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="221700" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="264950" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14120" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="60300" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="74420" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="339370 / 533714 " Textbox40="0.6358649014266068" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 5 (DANNY Y. CHOU)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="43500" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="223000" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="266500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14300" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="61000" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="75300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="341800 / 533714 " Textbox40="0.6404179017226455" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 5 (MARK SIMONS)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="43750" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="224300" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="268050" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14480" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="61700" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="76180" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="344230 / 533714 " Textbox40="0.6449709020186841" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSOCIATE JUSTICE COURT OF APPEAL, FIRST DISTRICT, DIVISION 5 (GORDON BURNS)   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="44000" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="225600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="269600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14660" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="62400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="77060" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="346660 / 533714 " Textbox40="0.6495239023147229" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="SUPERINTENDENT OF PUBLIC INSTRUCTION   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="SONJA SHAW ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="52400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="67200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="RICHARD BARRERA ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="42100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="214600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="256700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="323900 / 533714 " Textbox40="0.6068793398711669" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="MEMBER, BOARD OF EDUCATION   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="RYAN HAZELTON ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="21800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="112400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="134200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="PHIL KIM ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="26400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="138900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="165300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="VIRGINIA CHEUNG ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="24900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="129600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="154500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="LAURANCE LEE ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="19400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="98200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="117600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="AUTUMN BROWN GARIBAY ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="17200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="84100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="101300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ALIDA FISHER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="23600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="119800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="143400" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="REINA TELLO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="15900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="76400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="92300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="TIM TUNG ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="13100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="62300" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="75400" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="984000 / 533714 " Textbox40="1.8436840704946844" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="TRUSTEE, COMMUNITY COLLEGE BOARD FULL TERM   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="LISA P WYNN II ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="16800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="82400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="99200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ROME MOSES JONES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="15100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="74200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="89300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="LEAH LACROIX ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="25900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="134600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="160500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MONROE LACE ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="14200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="68900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="83100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JEREMY LEE ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="24100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="126800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="150900" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ELIJAH BALL ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="12300" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="59400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="71700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BUNNY MCFADDEN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="18900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="94200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="113100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ERWIN TAM ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="22700" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="118500" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="141200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="909000 / 533714 " Textbox40="1.7031593699996628" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="TRUSTEE, COMMUNITY COLLEGE BOARD PARTIAL TERM   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="RUTH FERGUSON ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="44800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="236400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="281200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="281200 / 533714 " Textbox40="0.5268739437226679" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="BART BOARD OF DIRECTORS, DISTRICT 8   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="SARA BARZ ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="23400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="122800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="146200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 244 of 244 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="146200 / 261730 " Textbox40="0.5585909143009972" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="ASSESSOR-RECORDER   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JOAQUÍN TORRES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="47900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="254100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="302000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="302000 / 533714 " Textbox40="0.5658461273266207" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="PUBLIC DEFENDER   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MANO RAJU ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="46800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="248900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="295700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="295700 / 533714 " Textbox40="0.5540420524850388" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="MEMBER, BOARD OF SUPERVISORS, DISTRICT 2   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="STEPHEN SHERRILL ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2410" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="11840" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="14250" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NICHOLAS BERG ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2680" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="9420" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="12100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MONTHANUS RATANAPAKDEE ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="1120" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="4210" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="5330" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="GUY MCCOY ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="540" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="1890" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="2430" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 47 of 47 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="34110 / 50676 " Textbox40="0.6730996921619702" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="MEMBER, BOARD OF SUPERVISORS, DISTRICT 4   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ALAN WONG ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2590" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="11260" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="13850" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ALBERT CHOW ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2940" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="10680" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="13620" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JEREMY JULIAN GRECO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="760" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="2840" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="3600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 47 of 47 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="31070 / 50949 " Textbox40="0.6098255117862961" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="MEMBER, BOARD OF SUPERVISORS, DISTRICT 6   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MATT DORSEY ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2380" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="11420" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="13800" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ALEX BEHREND ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2140" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="8190" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="10330" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 43 of 43 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="24130 / 38526 " Textbox40="0.6263302704666979" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="MEMBER, BOARD OF SUPERVISORS, DISTRICT 8   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="DARSHINI PATEL ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="2640" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="11480" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="14120" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MICHAEL T. NGUYEN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="1080" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="4620" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="5700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="EMANUEL &quot;MANNY&quot; YEKUTIEL ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="3420" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="16890" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="20310" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="GARY MCCOY ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="580" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="2190" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="2770" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 58 of 58 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="42900 / 60309 " Textbox40="0.7113366164254091" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="MEMBER, BOARD OF SUPERVISORS, DISTRICT 10   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JESSICA PESSECOW ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="740" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="3120" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="3860" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="ELLSWORTH &quot;ELL&quot; M. JENNISON, JR. ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="610" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="2480" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="3090" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="MIKE TROUBLE LIN ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="690" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="2890" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="3580" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="PEARCI &quot;PJ&quot; BASTIANY III ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="980" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="4260" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="5240" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="DIONJAY (DJ) BROOKTER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="840" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="3640" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="4480" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="DEANDRA BRYANT ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="520" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="2190" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="2710" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="SHAWN M. RICHARD ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="490" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="1980" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="2470" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="J.R. EPPLER ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="1120" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="4890" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="6010" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="THEO ELLINGTON ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="1340" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="5420" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="6760" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="JAMO MUHAMMAD ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="380" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="1420" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="1800" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="Write-in ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="0" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="0" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="0" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 51 of 51 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="40000 / 45343 " Textbox40="0.8821648324989524" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 1   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BONDS - YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="42100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="212400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="254500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BONDS - NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="21400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="96800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="118200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="372700 / 533714 " Textbox40="0.6983140783265944" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 2   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="45600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="228900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="274500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="18900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="81200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="100100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="374600 / 533714 " Textbox40="0.7018740374058016" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 3   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="49200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="246100" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="295300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="15200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="64800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="80000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375300 / 533714 " Textbox40="0.7031856012770885" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 4   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="39800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="198400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="238200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="24100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="110200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="134300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="372500 / 533714 " Textbox40="0.6979393457919411" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 5   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="36400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="176200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="212600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="27900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="132400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="160300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="372900 / 533714 " Textbox40="0.6986888108612478" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 37   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BONDS - YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="41200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="204600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="245800" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BONDS - NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="22800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="102900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="125700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371500 / 533714 " Textbox40="0.696065683118674" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 38   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BONDS - YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="38100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="189400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="227500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="BONDS - NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="25400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="118200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="143600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371100 / 533714 " Textbox40="0.6953162180493673" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 39   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="33900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="164200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="198100" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="29600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="142800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="172400" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="370500 / 533714 " Textbox40="0.6941920204454071" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 40   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="43800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="218900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="262700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="19800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="89400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="109200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371900 / 533714 " Textbox40="0.6968151481879808" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 41   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="31400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="148200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="179600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="32900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="158900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="191800" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371400 / 533714 " Textbox40="0.6958783168513474" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 42   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="46200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="231400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="277600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="17400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="76800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="94200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371800 / 533714 " Textbox40="0.6966277819206541" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 43   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="39200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="194800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="234000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="24600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="112600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="137200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371200 / 533714 " Textbox40="0.695503584316694" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 44   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="35100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="172600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="207700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="28400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="134900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="163300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371000 / 533714 " Textbox40="0.6951288517820405" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Proposition 45   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="41900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="208400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="250300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="21800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="99200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="121000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="371300 / 533714 " Textbox40="0.6956909505840206" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure RTM   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="38900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="196400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="235300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="25400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="114200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="139600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="374900 / 533714 " Textbox40="0.7024361362077817" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure A   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="42600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="214800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="257400" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="21800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="96400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="118200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375600 / 533714 " Textbox40="0.7037477000790686" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure B   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="36800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="184200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="221000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="27400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="126900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="154300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375300 / 533714 " Textbox40="0.7031856012770885" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure C   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="29400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="142600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="172000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="34900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="168400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="203300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375300 / 533714 " Textbox40="0.7031856012770885" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure D   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="34200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="169800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="204000" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="30100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="141200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="171300" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375300 / 533714 " Textbox40="0.7031856012770885" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure E   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="40800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="202400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="243200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="23600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="108600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="132200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375400 / 533714 " Textbox40="0.7033729675444151" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure F   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="31800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="156400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="188200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="32600" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="154200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="186800" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375000 / 533714 " Textbox40="0.7026235024751084" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure G   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="44900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="224600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="269500" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="19200" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="86400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="105600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375100 / 533714 " Textbox40="0.702810868742435" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure H   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="35900" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="178900" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="214800" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="28400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="131800" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="160200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375000 / 533714 " Textbox40="0.7026235024751084" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure I   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="38400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="191200" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="229600" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="26100" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="119600" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="145700" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375300 / 533714 " Textbox40="0.7031856012770885" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+                <ContestIdGroup contestId="Measure J   ">
+                  <CandidateResults>
+                    <Report Name="CandidateResultsRPT">
+                      <Tablix1>
+                        <chGroup_Collection>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="YES ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="41800" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="209400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="251200" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                          <chGroup>
+                            <candidateNameTextBox4 candidateNameTextBox4="NO ">
+                              <Textbox2 Textbox2="" Textbox14="" />
+                              <cgGroup_Collection>
+                                <cgGroup countingGroupName="Election Day" vot7="22400" />
+                                <cgGroup countingGroupName="Vote by Mail" vot7="101400" />
+                              </cgGroup_Collection>
+                              <Textbox13 vot8="123800" Textbox17="N/A" />
+                            </candidateNameTextBox4>
+                          </chGroup>
+                        </chGroup_Collection>
+                      </Tablix1>
+                    </Report>
+                  </CandidateResults>
+                  <ContestStatistics>
+                    <Report Name="ContestStatisticsRPT">
+                      <Tablix22>
+                        <DetailsTab_Collection>
+                          <DetailsTab reportedTab="Tabulators Reported: 1061 of 1061 1.0000000000" />
+                        </DetailsTab_Collection>
+                      </Tablix22>
+                      <Tablix2>
+                        <Details_Collection>
+                          <Details Textbox2="Precincts Reported: 514 of 514 1.0" />
+                        </Details_Collection>
+                      </Tablix2>
+                      <Textbox9 ballots2="375000 / 533714 " Textbox40="0.7026235024751084" />
+                    </Report>
+                  </ContestStatistics>
+                </ContestIdGroup>
+              </ContestIdGroup_Collection>
+            </contestList>
+          </Report>
+        </ElectionSummarySubReport>
+      </TabBatchGroup>
+    </TabBatchGroup_Collection>
+  </tabBatchIdList>
+</Report>
