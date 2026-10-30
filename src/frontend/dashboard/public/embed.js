@@ -12,7 +12,9 @@
     for (var i = 0; i < iframes.length; i++) {
       var iframe = iframes[i];
       if (iframe.contentWindow === event.source) {
-        iframe.style.height = height + 'px';
+        iframe.style.height = (height + 4) + 'px';
+        iframe.style.overflow = 'hidden';
+        iframe.setAttribute('scrolling', 'no');
         return;
       }
     }

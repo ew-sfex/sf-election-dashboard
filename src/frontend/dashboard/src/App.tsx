@@ -361,7 +361,7 @@ function App() {
     const demoSuffix = route.demoPct !== null ? `&demo=${route.demoPct}` : '';
 
     const buildBloxSnippet = (srcUrl: string, initialHeight: number) =>
-      `<iframe src="${srcUrl}" width="100%" height="${initialHeight}" frameborder="0" scrolling="no" style="border:0;width:100%;overflow:hidden;"></iframe>\n<script src="${embedScriptUrl}" async></script>`;
+      `<iframe src="${srcUrl}" width="100%" height="${initialHeight}" frameborder="0" style="border:0;width:100%;"></iframe>\n<script src="${embedScriptUrl}" async></script>`;
 
     const copySnippet = (slugKey: string, snippet: string) => {
       navigator.clipboard?.writeText(snippet);
