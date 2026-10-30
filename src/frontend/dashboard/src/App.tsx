@@ -653,7 +653,7 @@ function App() {
                         {sectionContests.length}{' '}
                         {sectionContests.length === 1 ? 'contest' : 'contests'}
                       </span>
-                      {section.scopeBanner && (
+                      {section.scopeBanner && section.id !== 'congress_leg' && (
                         <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-300">
                           SF County Totals Only
                         </span>
