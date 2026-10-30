@@ -120,11 +120,20 @@ function App() {
       const candidateUrls = buildDataCandidateUrls(route.demoPct);
       let lastErr: unknown = null;
 
-      for (const url of candidateUrls) {
+      // Use a 30-second bucket timestamp so browsers bypass stale CDN cache on live polls
+      const cacheBust = Math.floor(Date.now() / REFRESH_INTERVAL);
+
+      for (const rawUrl of candidateUrls) {
+        const separator = rawUrl.includes('?') ? '&' : '?';
+        const url =
+          route.demoPct !== null ? rawUrl : `${rawUrl}${separator}_cb=${cacheBust}`;
         try {
           const response = await axios.get<string>(url, {
             responseType: 'text',
             timeout: 12000,
+            headers: {
+              'Cache-Control': 'no-cache',
+            },
           });
           if (typeof response.data === 'string' && response.data.includes('<Report')) {
             const parsed = parseElectionXml(response.data);
