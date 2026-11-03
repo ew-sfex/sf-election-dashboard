@@ -161,7 +161,10 @@ export function parseElectionXml(xmlText: string): ParsedElectionSummary {
   // 1. Title metadata
   const titleReport: XmlNode = reportRoot?.Title?.Report ?? {};
   const timestampIso: string = titleReport?.Textbox9 ?? '';
-  const rawTextbox8: string = titleReport?.Textbox8 ?? '';
+  const rawTextbox8: string = (titleReport?.Textbox8 ?? '')
+    .replace(/&#xA;/gi, '\n')
+    .replace(/&#10;/g, '\n')
+    .replace(/&#xD;/gi, '\r');
   const titleLines = rawTextbox8
     .split(/\r?\n/)
     .map((s: string) => s.trim())
@@ -180,12 +183,15 @@ export function parseElectionXml(xmlText: string): ParsedElectionSummary {
   const turnoutPercentage = Number.isFinite(turnoutRatio)
     ? turnoutRatio * 100
     : registeredVoters > 0
-      ? (totalBallotsCast / registeredVoters)
+      ? (totalBallotsCast / registeredVoters) * 100
       : 0;
 
   let electionDayBallots = 0;
   let voteByMailBallots = 0;
-  for (const detail of asArray<XmlNode>(electorGroup?.Details1)) {
+  const turnoutDetails = asArray<XmlNode>(
+    electorGroup?.Details1_Collection?.Details1 ?? electorGroup?.Details1
+  );
+  for (const detail of turnoutDetails) {
     const groupName = String(detail?.countingGroup1 ?? '');
     const count = toInt(detail?.Textbox171);
     if (groupName.toLowerCase().includes('election day')) {
@@ -235,11 +241,16 @@ export function parseElectionXml(xmlText: string): ParsedElectionSummary {
 
     let ballotsCast = 0;
     let contestRegistered = 0;
-    for (const tb9 of asArray<XmlNode>(statsReport?.Textbox9)) {
+    const tb9Candidates = [
+      ...asArray<XmlNode>(statsReport?.Tablix1?.Textbox7?.Textbox9),
+      ...asArray<XmlNode>(statsReport?.Textbox9),
+    ];
+    for (const tb9 of tb9Candidates) {
       if (tb9?.ballots2) {
         const br = parseBallotsAndRegistered(String(tb9.ballots2));
         ballotsCast = br.ballots;
         contestRegistered = br.registered;
+        break;
       }
     }
 

@@ -80,7 +80,17 @@ function buildDataCandidateUrls(demoPct: string | null): string[] {
 }
 
 function formatTimestamp(isoStr: string): string {
-  if (!isoStr) return 'Pending first report';
+  if (!isoStr) return 'November 3, 2026';
+  // When SF Department of Elections sets Textbox9 to midnight (T00:00:00), format as date only
+  if (/^\d{4}-\d{2}-\d{2}T00:00:00$/.test(isoStr.trim())) {
+    const [y, m, d] = isoStr.trim().slice(0, 10).split('-').map(Number);
+    const localDate = new Date(y, m - 1, d);
+    return localDate.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  }
   const parsed = new Date(isoStr);
   if (Number.isNaN(parsed.getTime())) {
     return isoStr;
@@ -131,12 +141,17 @@ function App() {
           const response = await axios.get<string>(url, {
             responseType: 'text',
             timeout: 12000,
-            headers: {
-              'Cache-Control': 'no-cache',
-            },
           });
           if (typeof response.data === 'string' && response.data.includes('<Report')) {
             const parsed = parseElectionXml(response.data);
+            const lastModifiedHeader = response.headers?.['last-modified'];
+            if (
+              lastModifiedHeader &&
+              (!parsed.timestampIso || parsed.timestampIso.endsWith('T00:00:00')) &&
+              parsed.hasAnyVotes
+            ) {
+              parsed.timestampIso = lastModifiedHeader;
+            }
             if (isMounted) {
               setSummary(parsed);
               setRefreshError(null);

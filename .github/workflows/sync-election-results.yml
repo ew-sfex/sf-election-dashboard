@@ -6,10 +6,10 @@ on:
     branches:
       - main
   schedule:
-    # Election Night (Tue Nov 3, 2026 PST / Wed Nov 4 UTC 03:00–12:00): check every 5 minutes
-    - cron: '*/5 3-12 4 11 *'
-    # Daily Canvass Window (Nov 4–26, 2026 around 3:00 PM–7:00 PM PST / 23:00–03:00 UTC): check every 10 minutes
-    - cron: '*/10 0-3,23 4-26 11 *'
+    # Election Day & Night (Tue Nov 3 – Wed Nov 4, 2026 UTC): check every 5 minutes all day & night
+    - cron: '*/5 * 3-4 11 *'
+    # Canvass Period (Nov 5–26, 2026): check every 10 minutes around the clock
+    - cron: '*/10 * 5-26 11 *'
 
 permissions:
   contents: write
@@ -30,8 +30,8 @@ jobs:
             "https://sfelections.org/results/20261103/data/summary.xml" \
             -o /tmp/latest_summary.xml || cp src/frontend/dashboard/public/data/summary.xml /tmp/latest_summary.xml
 
-          # Compare against the currently deployed summary.xml on GitHub Pages
-          curl -fsSL -m 15 "https://ew-sfex.github.io/sf-election-dashboard/data/summary.xml" \
+          # Compare against the currently deployed summary.xml on GitHub Pages (bypass CDN cache)
+          curl -fsSL -m 15 "https://ew-sfex.github.io/sf-election-dashboard/data/summary.xml?_cb=$(date +%s)" \
             -o /tmp/deployed_summary.xml || touch /tmp/deployed_summary.xml
 
           if [ "${{ github.event_name }}" != "schedule" ]; then
