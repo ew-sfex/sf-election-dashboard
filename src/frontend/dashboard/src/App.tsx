@@ -407,12 +407,6 @@ function App() {
                   Reader-facing views never show embed buttons.
                 </p>
               </div>
-              <a
-                href={route.demoPct !== null ? `?demo=${route.demoPct}` : './'}
-                className="text-sm font-semibold text-gray-900 bg-amber-400 hover:bg-amber-300 px-3.5 py-2 rounded transition"
-              >
-                ← Back to Public Dashboard
-              </a>
             </div>
 
             <div className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
