@@ -43,7 +43,7 @@ export function RaceCard({
 
         {/* Multi-county / Statewide SF-only note */}
         {contest.scopeNote && (
-          <div className="mb-3 px-2.5 py-1.5 rounded bg-gray-50 border border-gray-200 text-xs text-gray-600">
+          <div className="mb-3 px-2.5 py-1.5 rounded bg-white border border-gray-200 text-xs text-gray-600">
             <span className="font-semibold text-gray-800">Note: </span>
             {contest.scopeNote}
           </div>

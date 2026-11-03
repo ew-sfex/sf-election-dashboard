@@ -235,7 +235,7 @@ function App() {
 
   if (initialLoading && !summary) {
     return (
-      <div className="flex items-center justify-center min-h-[240px] p-6 bg-gray-50 text-gray-700">
+      <div className="flex items-center justify-center min-h-[240px] p-6 bg-white text-gray-700">
         <div className="text-center">
           <div className="text-base font-semibold">Loading 2026 SF Election Results…</div>
           <div className="text-xs text-gray-500 mt-1">
@@ -248,7 +248,7 @@ function App() {
 
   if (!summary) {
     return (
-      <div className="flex items-center justify-center min-h-[240px] p-6 bg-gray-50">
+      <div className="flex items-center justify-center min-h-[240px] p-6 bg-white">
         <div className="bg-white border border-red-200 rounded-lg p-4 max-w-md text-center">
           <div className="text-base font-bold text-red-700">
             {refreshError || 'Failed to load election data'}
@@ -315,7 +315,7 @@ function App() {
         : 'Measure RTM and Measures A through J · Simple or supermajority thresholds as required';
 
     return (
-      <div className="bg-gray-50 p-3 sm:p-5">
+      <div className="bg-white py-2">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-lg border border-gray-200 p-4 mb-4 flex flex-wrap items-center justify-between gap-3 border-t-4 border-t-[#EAB308]">
             <div>
@@ -566,8 +566,8 @@ function App() {
   const isInIframe = typeof window !== 'undefined' && window.self !== window.top;
 
   return (
-    <div className={`${isInIframe ? '' : 'min-h-screen'} bg-gray-50 py-4 sm:py-6`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <div className="bg-white py-2">
+      <div className={`max-w-7xl mx-auto ${isInIframe ? '' : 'px-4 sm:px-6 lg:px-8'} space-y-4`}>
         {/* Top Masthead & Turnout Summary */}
         <header className="bg-white rounded-lg border border-gray-200 p-5 border-t-4 border-t-[#EAB308]">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -603,7 +603,7 @@ function App() {
             </div>
 
             {/* Citywide Turnout Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-gray-50 p-3 rounded-lg border border-gray-200 text-left">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-white p-3 rounded-lg border border-gray-200 text-left">
               <div>
                 <div className="text-[11px] uppercase tracking-wider text-gray-500 font-semibold">
                   SF Turnout
@@ -751,7 +751,7 @@ function App() {
 
                 {/* Accordion Body */}
                 {isOpen && (
-                  <div className="p-4 sm:p-5 border-t border-gray-200 bg-gray-50/60 space-y-4">
+                  <div className="p-4 sm:p-5 border-t border-gray-200 bg-white space-y-4">
                     {section.scopeBanner && (
                       <div className="px-3.5 py-2.5 rounded-md bg-amber-50 border border-amber-200 text-xs sm:text-sm text-amber-950">
                         {section.scopeBanner}
