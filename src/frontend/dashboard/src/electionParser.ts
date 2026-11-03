@@ -99,14 +99,12 @@ function formatCandidateDisplayName(rawName: string): string {
         const inner = word.slice(1, -1);
         return `(${inner.charAt(0).toUpperCase()}${inner.slice(1).toLowerCase()})`;
       }
-      return word
-        .split(/(['’-])/)
-        .map((part) =>
-          /^[A-Za-zÀ-ÖØ-öø-ÿ]+$/.test(part)
-            ? part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
-            : part
-        )
-        .join('');
+      return word.replace(/[A-Za-zÀ-ÖØ-öø-ÿ]+/g, (part) => {
+        const titled = part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        return /^Mc[a-z]/.test(titled)
+          ? `Mc${titled.charAt(2).toUpperCase()}${titled.slice(3)}`
+          : titled;
+      });
     })
     .join(' ');
 }
