@@ -2,6 +2,14 @@ name: Sync 2026 SF Election Results & Deploy Dashboard
 
 on:
   workflow_dispatch:
+    inputs:
+      watch_minutes:
+        description: 'Poll sfelections.org every 30s for this many minutes (max 320) and publish each new report. 0 = rebuild and redeploy the whole site once.'
+        default: '0'
+      force:
+        description: 'Publish upstream XML even if total ballots went down'
+        type: boolean
+        default: false
   push:
     branches:
       - main
@@ -15,76 +23,59 @@ on:
 permissions:
   contents: write
 
+# Long watch runs get their own group so pushes and cron runs are never queued behind them.
 concurrency:
-  group: sf-election-results-sync
+  group: ${{ (github.event_name == 'workflow_dispatch' && inputs.watch_minutes != '0') && 'sf-election-watch' || 'sf-election-results-sync' }}
   cancel-in-progress: false
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      FORCE: ${{ inputs.force || false }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Poll sfelections.org every 30s during release windows
-        id: check_xml
+      - name: Choose sync mode
+        id: mode
         env:
           EVENT_NAME: ${{ github.event_name }}
+          WATCH_MINUTES: ${{ inputs.watch_minutes || '0' }}
         run: |
-          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-          UPSTREAM_URL="https://sfelections.org/results/20261103/data/summary.xml"
-          DEPLOYED_URL="https://ew-sfex.github.io/sf-election-dashboard/data/summary.xml"
-
-          mkdir -p src/frontend/dashboard/public/data
-
-          # Fetch currently deployed summary.xml from GitHub Pages once at start of job
-          curl -fsSL -m 15 "${DEPLOYED_URL}?_cb=$(date +%s)" -o /tmp/deployed_summary.xml || cp src/frontend/dashboard/public/data/summary.xml /tmp/deployed_summary.xml
-
-          # On manual workflow_dispatch or push to main, fetch latest XML and deploy immediately
-          if [ "$EVENT_NAME" != "schedule" ]; then
-            echo "Manual/push run ($EVENT_NAME): fetching latest XML and proceeding to deploy..."
-            curl -fSL -m 30 -A "$UA" "$UPSTREAM_URL?_cb=$(date +%s)" -o src/frontend/dashboard/public/data/summary.xml || echo "Using checked-in summary.xml fallback"
-            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-            exit 0
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            # Peak SF release windows get 9 checks x 30s (4.5 minutes between 5-minute crons):
+            # - Election Night: Wed Nov 4 04:00 – 09:59 UTC (Tue 8:00 PM – Wed 1:59 AM PST)
+            # - Daily canvass drop: 23:00 – 00:59 UTC (3:00 – 4:59 PM PST)
+            UTC_HOUR=$(date -u +%H)
+            UTC_DAY=$(date -u +%d)
+            ITERATIONS=1
+            if [ "$UTC_DAY" = "04" ] && [ "$UTC_HOUR" -ge 4 ] && [ "$UTC_HOUR" -le 9 ]; then
+              ITERATIONS=9
+            elif [ "$UTC_HOUR" = "23" ] || [ "$UTC_HOUR" = "00" ]; then
+              ITERATIONS=9
+            fi
+            echo "mode=poll" >> "$GITHUB_OUTPUT"
+            echo "iterations=$ITERATIONS" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENT_NAME" = "workflow_dispatch" ] && [ "$WATCH_MINUTES" -gt 0 ] 2>/dev/null; then
+            [ "$WATCH_MINUTES" -gt 320 ] && WATCH_MINUTES=320
+            echo "mode=poll" >> "$GITHUB_OUTPUT"
+            echo "iterations=$((WATCH_MINUTES * 2))" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=build" >> "$GITHUB_OUTPUT"
           fi
 
-          # Determine if we are inside a peak SF Department of Elections release window:
-          # - Election Night: Tue Nov 3 8:00 PM PST – Wed Nov 4 1:30 AM PST (Wed Nov 4 04:00 – 09:30 UTC)
-          # - Daily Canvass Drop: 3:00 PM – 5:00 PM PST (23:00 – 01:00 UTC)
-          UTC_HOUR=$(date -u +%H)
-          UTC_DAY=$(date -u +%d)
-          MAX_CHECKS=1
-          if [ "$UTC_DAY" = "04" ] && [ "$UTC_HOUR" -ge 4 ] && [ "$UTC_HOUR" -le 9 ]; then
-            MAX_CHECKS=9
-          elif [ "$UTC_HOUR" = "23" ] || [ "$UTC_HOUR" = "00" ]; then
-            MAX_CHECKS=9
-          fi
+      - name: Poll sfelections.org and publish new XML to gh-pages
+        if: steps.mode.outputs.mode == 'poll'
+        run: bash .github/scripts/sync-results.sh poll "${{ steps.mode.outputs.iterations }}"
 
-          echo "Polling sfelections.org (${MAX_CHECKS} checks at 30s intervals)..."
-          for i in $(seq 1 "$MAX_CHECKS"); do
-            echo "[Check $i/$MAX_CHECKS at $(date -u +'%H:%M:%S UTC')] Checking $UPSTREAM_URL ..."
-            if curl -fsSL -m 20 -A "$UA" "$UPSTREAM_URL?_cb=$(date +%s)" -o /tmp/latest_summary.xml; then
-              if ! cmp -s /tmp/latest_summary.xml /tmp/deployed_summary.xml; then
-                echo ">>> NEW ELECTION RESULTS DETECTED AT $(date -u +'%H:%M:%S UTC')! Breaking loop to deploy immediately."
-                cp /tmp/latest_summary.xml src/frontend/dashboard/public/data/summary.xml
-                echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-                exit 0
-              else
-                echo "No change from deployed summary.xml."
-              fi
-            else
-              echo "Warning: upstream fetch failed on check $i."
-            fi
-
-            if [ "$i" -lt "$MAX_CHECKS" ]; then
-              sleep 30
-            fi
-          done
-
-          echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+      - name: Fetch latest valid XML for full build
+        if: steps.mode.outputs.mode == 'build'
+        run: bash .github/scripts/sync-results.sh prepare-build
 
       - name: Setup Node.js
-        if: steps.check_xml.outputs.should_deploy == 'true'
+        if: steps.mode.outputs.mode == 'build'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -92,14 +83,14 @@ jobs:
           cache-dependency-path: src/frontend/dashboard/package-lock.json
 
       - name: Install and build frontend
-        if: steps.check_xml.outputs.should_deploy == 'true'
+        if: steps.mode.outputs.mode == 'build'
         working-directory: src/frontend/dashboard
         run: |
           npm ci
           npm run build
 
       - name: Deploy to gh-pages
-        if: steps.check_xml.outputs.should_deploy == 'true'
+        if: steps.mode.outputs.mode == 'build'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
