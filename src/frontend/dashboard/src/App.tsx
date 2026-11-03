@@ -170,13 +170,13 @@ function App() {
 
     const sendHeight = () => {
       const rootEl = document.getElementById('root');
-      const height = Math.ceil(
-        Math.max(
-          rootEl ? rootEl.getBoundingClientRect().height : 0,
-          document.body ? document.body.scrollHeight : 0,
-          document.documentElement ? document.documentElement.offsetHeight : 0
-        )
-      );
+      const firstChild = rootEl?.firstElementChild as HTMLElement | null;
+      const measured = firstChild
+        ? firstChild.getBoundingClientRect().height
+        : rootEl
+          ? rootEl.getBoundingClientRect().height
+          : 0;
+      const height = Math.ceil(measured);
       if (height > 0) {
         window.parent?.postMessage(
           {
@@ -198,9 +198,10 @@ function App() {
       observer = new ResizeObserver(() => {
         sendHeight();
       });
-      const rootEl = document.getElementById('root') || document.body;
-      if (rootEl) {
-        observer.observe(rootEl);
+      const rootEl = document.getElementById('root');
+      const targetEl = (rootEl?.firstElementChild as HTMLElement | null) || rootEl || document.body;
+      if (targetEl) {
+        observer.observe(targetEl);
       }
     }
 
@@ -562,9 +563,10 @@ function App() {
   // VIEW 4: FULL PUBLIC DASHBOARD WITH CATEGORY ACCORDIONS (/)
   // ============================================================================
   const normalizedSearch = searchQuery.trim().toLowerCase();
+  const isInIframe = typeof window !== 'undefined' && window.self !== window.top;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-6">
+    <div className={`${isInIframe ? '' : 'min-h-screen'} bg-gray-50 py-4 sm:py-6`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         {/* Top Masthead & Turnout Summary */}
         <header className="bg-white rounded-lg border border-gray-200 p-5 border-t-4 border-t-[#EAB308]">
@@ -769,23 +771,25 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className="text-xs text-gray-500 pt-2 pb-8 flex flex-wrap items-center justify-between gap-3">
+        <footer className="text-xs text-gray-500 pt-2 pb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
             Data source: City and County of San Francisco Department of Elections (
             <code className="font-mono">sfelections.org</code>). Registered SF voters:{' '}
             {summary.registeredVoters.toLocaleString()}.
           </div>
-          <div className="flex items-center gap-4">
-            <a href="?view=supervisors" className="hover:underline text-gray-600">
-              Supervisors View
-            </a>
-            <a href="?view=measures" className="hover:underline text-gray-600">
-              Measures View
-            </a>
-            <a href="?view=embeds" className="hover:underline text-gray-600">
-              Embed Directory
-            </a>
-          </div>
+          {!isInIframe && (
+            <div className="flex items-center gap-4">
+              <a href="?view=supervisors" className="hover:underline text-gray-600">
+                Supervisors View
+              </a>
+              <a href="?view=measures" className="hover:underline text-gray-600">
+                Measures View
+              </a>
+              <a href="?view=embeds" className="hover:underline text-gray-600">
+                Embed Directory
+              </a>
+            </div>
+          )}
         </footer>
       </div>
     </div>
