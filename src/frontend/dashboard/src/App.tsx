@@ -11,7 +11,7 @@ import {
 } from './electionParser';
 import { RaceCard } from './RaceCard';
 
-const REFRESH_INTERVAL = 30000; // 30 seconds
+const REFRESH_INTERVAL = 15000; // 15 seconds
 
 type AppMode = 'dashboard' | 'supervisors' | 'measures' | 'single-race' | 'embeds';
 

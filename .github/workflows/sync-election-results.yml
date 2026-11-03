@@ -6,13 +6,18 @@ on:
     branches:
       - main
   schedule:
-    # Election Day & Night (Tue Nov 3 – Wed Nov 4, 2026 UTC): check every 5 minutes all day & night
+    # Election Day & Night (Tue Nov 3 – Wed Nov 4, 2026 UTC): wake up every 5 minutes
     - cron: '*/5 * 3-4 11 *'
-    # Canvass Period (Nov 5–26, 2026): check every 10 minutes around the clock
-    - cron: '*/10 * 5-26 11 *'
+    # Canvass Period (Nov 5–26, 2026): wake up every 5 minutes during the 3:00 PM – 6:00 PM PST (23:00 – 02:00 UTC) release window, and every 15 minutes otherwise
+    - cron: '*/5 0-2,23 5-26 11 *'
+    - cron: '*/15 3-22 5-26 11 *'
 
 permissions:
   contents: write
+
+concurrency:
+  group: sf-election-results-sync
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
@@ -21,50 +26,81 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Fetch latest 2026 SF Election Summary XML and check for changes
-        id: check_xml
-        run: |
-          mkdir -p src/frontend/dashboard/public/data
-          curl -fSL -m 30 \
-            -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" \
-            "https://sfelections.org/results/20261103/data/summary.xml" \
-            -o /tmp/latest_summary.xml || cp src/frontend/dashboard/public/data/summary.xml /tmp/latest_summary.xml
-
-          # Compare against the currently deployed summary.xml on GitHub Pages (bypass CDN cache)
-          curl -fsSL -m 15 "https://ew-sfex.github.io/sf-election-dashboard/data/summary.xml?_cb=$(date +%s)" \
-            -o /tmp/deployed_summary.xml || touch /tmp/deployed_summary.xml
-
-          if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "Non-scheduled run (${{ github.event_name }}); proceeding with build and deploy."
-            cp /tmp/latest_summary.xml src/frontend/dashboard/public/data/summary.xml
-            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-          elif ! cmp -s /tmp/latest_summary.xml /tmp/deployed_summary.xml; then
-            echo "New election results detected on sfelections.org! Proceeding with deploy."
-            cp /tmp/latest_summary.xml src/frontend/dashboard/public/data/summary.xml
-            echo "should_deploy=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "No changes in sfelections.org summary.xml since last deploy; skipping rebuild."
-            echo "should_deploy=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Setup Node.js
-        if: steps.check_xml.outputs.should_deploy == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
           cache-dependency-path: src/frontend/dashboard/package-lock.json
 
-      - name: Install and build frontend
-        if: steps.check_xml.outputs.should_deploy == 'true'
+      - name: Poll sfelections.org every 30s during release windows & deploy immediately on change
         working-directory: src/frontend/dashboard
+        env:
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          npm ci
-          npm run build
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+          UPSTREAM_URL="https://sfelections.org/results/20261103/data/summary.xml"
+          DEPLOYED_URL="https://ew-sfex.github.io/sf-election-dashboard/data/summary.xml"
 
-      - name: Deploy to gh-pages
-        if: steps.check_xml.outputs.should_deploy == 'true'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./src/frontend/dashboard/dist
+          # Fetch currently deployed summary.xml from GitHub Pages once at start of job
+          curl -fsSL -m 15 "${DEPLOYED_URL}?_cb=$(date +%s)" -o /tmp/deployed_summary.xml || cp public/data/summary.xml /tmp/deployed_summary.xml
+
+          # Determine if we are inside a peak SF Department of Elections release window:
+          # - Election Night: Tue Nov 3 8:00 PM PST – Wed Nov 4 1:30 AM PST (Wed Nov 4 04:00 – 09:30 UTC)
+          # - Daily Canvass Drop: 3:45 PM – 4:45 PM PST (23:45 – 00:45 UTC)
+          UTC_HOUR=$(date -u +%H)
+          UTC_DAY=$(date -u +%d)
+          IS_PEAK="false"
+          if [ "$UTC_DAY" = "04" ] && [ "$UTC_HOUR" -ge 4 ] && [ "$UTC_HOUR" -le 9 ]; then
+            IS_PEAK="true"
+          elif [ "$UTC_HOUR" = "23" ] || [ "$UTC_HOUR" = "00" ]; then
+            IS_PEAK="true"
+          fi
+
+          # On manual workflow_dispatch or push to main, build & deploy immediately
+          if [ "$EVENT_NAME" != "schedule" ]; then
+            echo "Manual/push run ($EVENT_NAME): fetching latest XML and deploying immediately..."
+            curl -fSL -m 30 -A "$UA" "$UPSTREAM_URL?_cb=$(date +%s)" -o public/data/summary.xml || echo "Using checked-in summary.xml fallback"
+            npm ci
+            npm run build
+            npx --yes gh-pages -d dist -m "Sync live 2026 SF election results ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            exit 0
+          fi
+
+          # During peak release windows, poll every 30 seconds for 9 iterations (covering the full 4.5-minute span between 5-minute cron runs).
+          # Outside peak windows, check once per cron trigger.
+          MAX_CHECKS=1
+          if [ "$IS_PEAK" = "true" ]; then
+            MAX_CHECKS=9
+            echo "Peak election release window active: polling sfelections.org every 30 seconds (${MAX_CHECKS} checks)..."
+          fi
+
+          DEPS_INSTALLED="false"
+
+          for i in $(seq 1 "$MAX_CHECKS"); do
+            echo "[Check $i/$MAX_CHECKS at $(date -u +'%H:%M:%S UTC')] Checking $UPSTREAM_URL ..."
+            if curl -fsSL -m 20 -A "$UA" "$UPSTREAM_URL?_cb=$(date +%s)" -o /tmp/latest_summary.xml; then
+              if ! cmp -s /tmp/latest_summary.xml /tmp/deployed_summary.xml; then
+                echo ">>> NEW ELECTION RESULTS DETECTED AT $(date -u +'%H:%M:%S UTC')! Building and deploying to gh-pages..."
+                cp /tmp/latest_summary.xml public/data/summary.xml
+                cp /tmp/latest_summary.xml /tmp/deployed_summary.xml
+
+                if [ "$DEPS_INSTALLED" = "false" ]; then
+                  npm ci
+                  DEPS_INSTALLED="true"
+                fi
+
+                npm run build
+                npx --yes gh-pages -d dist -m "Update live 2026 SF election results ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+                echo ">>> Deployed new results to GitHub Pages!"
+              else
+                echo "No change from deployed summary.xml."
+              fi
+            else
+              echo "Warning: upstream fetch failed on check $i."
+            fi
+
+            if [ "$i" -lt "$MAX_CHECKS" ]; then
+              sleep 30
+            fi
+          done
