@@ -52,8 +52,12 @@ export interface ParsedElectionSummary {
   precinctsReported: number;
   totalPrecincts: number;
   hasAnyVotes: boolean;
+  /** Votes counted but no Election Day ballots yet; SF still reports every precinct as "reported". */
+  mailBallotsOnly: boolean;
   contests: ParsedContest[];
 }
+
+const MAIL_ONLY_PRECINCT_LABEL = 'Mail ballots only · polling places not yet reported';
 
 function asArray<T>(val: T | T[] | undefined | null): T[] {
   if (val === undefined || val === null) return [];
@@ -91,15 +95,9 @@ function formatCandidateDisplayName(rawName: string): string {
             ? 'Sr.'
             : word.toUpperCase();
       }
-      if (word.startsWith('"') && word.endsWith('"') && word.length > 2) {
-        const inner = word.slice(1, -1);
-        return `"${inner.charAt(0).toUpperCase()}${inner.slice(1).toLowerCase()}"`;
-      }
-      if (word.startsWith('(') && word.endsWith(')') && word.length > 2) {
-        const inner = word.slice(1, -1);
-        return `(${inner.charAt(0).toUpperCase()}${inner.slice(1).toLowerCase()})`;
-      }
       return word.replace(/[A-Za-zÀ-ÖØ-öø-ÿ]+/g, (part) => {
+        // Vowel-less nicknames like "DJ" or "PJ" are initials
+        if (part.length > 1 && !/[aeiouyà-ÿ]/i.test(part)) return part.toUpperCase();
         const titled = part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
         return /^Mc[a-z]/.test(titled)
           ? `Mc${titled.charAt(2).toUpperCase()}${titled.slice(3)}`
@@ -404,6 +402,13 @@ export function parseElectionXml(xmlText: string): ParsedElectionSummary {
     }
   }
 
+  const mailBallotsOnly = hasAnyVotes && electionDayBallots === 0;
+  if (mailBallotsOnly) {
+    for (const contest of orderedContests) {
+      contest.precinctsLabel = MAIL_ONLY_PRECINCT_LABEL;
+    }
+  }
+
   return {
     electionTitle,
     reportTitle,
@@ -416,6 +421,7 @@ export function parseElectionXml(xmlText: string): ParsedElectionSummary {
     precinctsReported: overallPrecincts.reported,
     totalPrecincts: overallPrecincts.total,
     hasAnyVotes,
+    mailBallotsOnly,
     contests: orderedContests,
   };
 }

@@ -372,8 +372,10 @@ function App() {
 
           <div className="mt-4 text-xs text-gray-500 flex flex-wrap items-center justify-between gap-2">
             <span>
-              Source: San Francisco Department of Elections · {summary.precinctsReported} of{' '}
-              {summary.totalPrecincts} precincts reporting
+              Source: San Francisco Department of Elections ·{' '}
+              {summary.mailBallotsOnly
+                ? 'Mail ballots only; polling places not yet reported'
+                : `${summary.precinctsReported} of ${summary.totalPrecincts} precincts reporting`}
             </span>
             {route.demoPct !== null && (
               <span className="font-semibold text-amber-800">
@@ -649,9 +651,13 @@ function App() {
                   Precincts
                 </div>
                 <div className="text-lg font-bold text-gray-900 tabular-nums">
-                  {summary.precinctsReported} / {summary.totalPrecincts}
+                  {summary.mailBallotsOnly
+                    ? `0 / ${summary.totalPrecincts}`
+                    : `${summary.precinctsReported} / ${summary.totalPrecincts}`}
                 </div>
-                <div className="text-[11px] text-gray-500">In-person reporting</div>
+                <div className="text-[11px] text-gray-500">
+                  {summary.mailBallotsOnly ? 'Polling places not yet reported' : 'Precincts reported'}
+                </div>
               </div>
 
               <div>
