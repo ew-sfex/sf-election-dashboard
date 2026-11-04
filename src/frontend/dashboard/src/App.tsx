@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import axios from 'axios';
 import {
   ACCORDION_SECTIONS,
@@ -101,6 +101,8 @@ function formatTimestamp(isoStr: string): string {
     year: 'numeric',
     hour: 'numeric',
     minute: '2-digit',
+    timeZone: 'America/Los_Angeles',
+    timeZoneName: 'short',
   });
 }
 
@@ -123,14 +125,17 @@ function App() {
     }
   );
 
+  const latestBallotsRef = useRef<number>(0);
+
   useEffect(() => {
     let isMounted = true;
 
     const fetchData = async () => {
+      if (document.hidden) return;
       const candidateUrls = buildDataCandidateUrls(route.demoPct);
       let lastErr: unknown = null;
 
-      // Use a 30-second bucket timestamp so browsers bypass stale CDN cache on live polls
+      // GitHub Pages' CDN ignores query strings; this only bypasses the browser's own cache
       const cacheBust = Math.floor(Date.now() / REFRESH_INTERVAL);
 
       for (const rawUrl of candidateUrls) {
@@ -144,6 +149,14 @@ function App() {
           });
           if (typeof response.data === 'string' && response.data.includes('<Report')) {
             const parsed = parseElectionXml(response.data);
+            if (parsed.contests.length === 0) {
+              throw new Error('Election XML contained no contests');
+            }
+            // Different CDN edges can briefly serve an older report; never step backwards
+            if (parsed.totalBallotsCast < latestBallotsRef.current) {
+              return;
+            }
+            latestBallotsRef.current = parsed.totalBallotsCast;
             const lastModifiedHeader = response.headers?.['last-modified'];
             if (
               lastModifiedHeader &&
@@ -171,11 +184,17 @@ function App() {
       }
     };
 
+    const onVisibilityChange = () => {
+      if (!document.hidden) fetchData();
+    };
+
     fetchData();
     const interval = setInterval(fetchData, REFRESH_INTERVAL);
+    document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
       isMounted = false;
       clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
     };
   }, [route.demoPct]);
 
@@ -269,7 +288,7 @@ function App() {
             {refreshError || 'Failed to load election data'}
           </div>
           <p className="text-xs text-gray-600 mt-1">
-            The page will automatically retry every 30 seconds.
+            The page will automatically retry every 15 seconds.
           </p>
         </div>
       </div>
