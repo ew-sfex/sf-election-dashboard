@@ -15,4 +15,4 @@ The vote columns and the census percentage columns are there for tooltips. Censu
 
 ## Bar charts
 
-`districts.csv` has one row per supervisor district, 1 through 11. `chan_pct` uses only the CA-11 precincts in that district. District 11 contributes about 1,700 votes to CA-11.
+`districts.csv` has one row per supervisor district, 1 through 11. `chan_pct` uses only the CA-11 precincts in that district. Supervisor District 11 contributes only 1,745 votes to CA-11, because most of it is in CA-15.
