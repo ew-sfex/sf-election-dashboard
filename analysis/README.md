@@ -7,14 +7,14 @@ pip install -r analysis/requirements.txt
 python analysis/run_all.py
 ```
 
-Raw downloads go in `analysis/raw/` and are not committed. Tables and figures land in `analysis/output/`.
+Raw downloads go in `analysis/raw/` and are not committed. Tables and figures land in `analysis/output/`. The last step, `build_drive.py`, copies the findings note, its figures, and the source tables into `sf-2026-drive/`, reruns that folder’s notebook, and rebuilds `sf-2026-drive.zip`. Edit `analysis/FINDINGS.md`, not the copy in the Drive folder.
 
 ## Sources
 
 - Statement of the Vote, Preliminary Report 9 (November 8, 2026, 4:00 p.m. Pacific), plus Report 5 (November 4) for the Measure B comparison. Citywide trend uses summary reports 1 and 4 through 9.
 - Precinct shapes: DataSF “Election Precincts — Current, Defined 2022” (`d6x4-hefw`). 514 polygons, one per reporting precinct. The join on precinct number is exact.
 - District and neighborhood names: Department of Elections crosswalk `N26_ConsolDistBT_20260817.xlsx` (August 17, 2026). Use this, not the 2022 district fields on the shapes, for congressional and supervisor district.
-- Angel Island (`9904`) and Alameda Island (`9903`) are zero-voter boundary precincts. They stay in the data file and are left off the maps.
+- Four precincts have no registered voters: Angel Island (`9904`), Alameda Island (`9903`), and two small inland precincts, `9901` (Outer Mission) and `9902` (Portola). They stay in the data file and are left off the maps.
 - Party: the Department’s citywide registration-by-party page. It is not a precinct file, and its total does not match the 535,608 registered voters on the Statement of the Vote. No precinct party map is produced.
 - 2020 PL 94-171 for race, Hispanic origin, voting-age population, group quarters, and housing, on 2020 census blocks.
 - ACS 2020–2024 five-year tables: block-group B15003 (education), B25003 (tenure), and B19001 (income). B05001 (nativity) is a tract table in this summary file. Foreign born is naturalized citizens plus non-citizens.
@@ -29,11 +29,11 @@ These are precinct descriptions, not statements about how a demographic group vo
 
 ## Figures
 
-Report 9, unless a filename says otherwise. Precincts under 50 ballots are gray on rate maps.
+Report 9, unless a filename says otherwise. Precincts under 50 ballots are hatched gray on rate maps. Each diverging map’s color scale is set evenly around 50% and wide enough to hold every precinct, and the build fails if a value falls past the end of any color bar.
 
 - `turnout.png`, `mail_share.png`
 - `governor_hilton.png`, `governor_by_district.png` — San Francisco votes only
-- `ca11_chan.png`, `ca11_by_district.png` — District 11 precincts only
+- `ca11_chan.png`, `ca11_by_district.png` — CA-11 precincts only
 - `measure_b_yes.png`, `measure_b_by_district.png`. `measure_b_trend.png` and `measure_b_ballots_after_nov4.png` are the canvass path for that one measure
 - `measure_g_yes.png`, `measure_i_yes.png`, `measure_d_yes.png` — the other local measures that are either close or sharply east-west
 - Census scatters, after `apportion_census.py`: Measure B against renters and against Hispanic share, CA-11 against Asian share, the governor’s race against Asian share, Measure G against Asian share, turnout against bachelor’s degrees
