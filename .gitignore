@@ -133,6 +133,9 @@ venv.bak/
 **/.DS_Store
 src/frontend/dashboard/.vite/
 
+# Downloaded election, precinct, and census source files
+analysis/raw/
+
 
 # Spyder project settings
 .spyderproject

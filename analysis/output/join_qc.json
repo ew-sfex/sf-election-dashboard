@@ -1,0 +1,9 @@
+{
+  "precinct_shapes": 514,
+  "sov_precincts": 514,
+  "shapes_missing_from_sov": [],
+  "sov_precincts_missing_a_shape": [],
+  "reconciliation_max_abs_difference": 0,
+  "cumulative_votes_measure_b": 0,
+  "negative_added_precincts": 0
+}
