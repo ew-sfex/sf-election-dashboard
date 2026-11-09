@@ -7,7 +7,7 @@ pip install -r analysis/requirements.txt
 python analysis/run_all.py
 ```
 
-Raw downloads go in `analysis/raw/` and are not committed. Tables and figures land in `analysis/output/`. The last step, `build_drive.py`, copies the findings note, its figures, and the source tables into `sf-2026-drive/`, reruns that folder’s notebook, and rebuilds `sf-2026-drive.zip`. Edit `analysis/FINDINGS.md`, not the copy in the Drive folder.
+Raw downloads go in `analysis/raw/` and are not committed. Tables and figures land in `analysis/output/`. The last step, `build_drive.py`, copies the findings note, its figures, the source tables, and `sf2026.py` into `sf-2026-drive/`. It then writes and runs one Colab notebook per memo section (`build_notebooks.py`), reruns the Datawrapper export notebook, and rebuilds `sf-2026-drive.zip`. Each section notebook checks every number its section quotes, so the build stops if `FINDINGS.md` and the data disagree. When you change a number in the note, change it in `build_notebooks.py` too. Edit `analysis/FINDINGS.md` and `analysis/sf2026.py`, not the copies in the Drive folder.
 
 ## Sources
 

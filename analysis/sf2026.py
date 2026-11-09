@@ -320,9 +320,20 @@ def two_way(frame: pd.DataFrame, named: str, other: str) -> tuple[pd.Series, pd.
     return frame[named] / votes.where(votes > 0), votes
 
 
+def local_measures(frame: pd.DataFrame) -> list[str]:
+    columns = [c for c in frame.columns if c.startswith("measure_") and c.endswith("__yes")]
+    return sorted("Measure " + c[len("measure_") : -len("__yes")].upper() for c in columns)
+
+
+def by_neighborhood(frame: pd.DataFrame, named: str, other: str) -> pd.Series:
+    grouped = frame.groupby("Neighborhood")[[named, other]].sum()
+    votes = grouped[named] + grouped[other]
+    return (100 * grouped[named] / votes.where(votes > 0)).dropna()
+
+
 def citywide(frame: pd.DataFrame, named: str, other: str) -> dict:
     a, b = frame[named].sum(), frame[other].sum()
-    return {named: int(a), other: int(b), "share_pct": 100 * a / (a + b), "margin": int(a - b)}
+    return {named: int(a), other: int(b), "share_pct": float(100 * a / (a + b)), "margin": int(a - b)}
 
 
 def percentile_range(share: pd.Series, keep: pd.Series) -> list[float]:

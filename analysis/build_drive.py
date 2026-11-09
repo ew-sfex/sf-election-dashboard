@@ -4,10 +4,11 @@ Run after run_all.py, from the repository root:
 
     python analysis/build_drive.py
 
-FINDINGS.md, the figures it shows, the notebook's source files, and the
-measure screen are copied from the analysis. The Datawrapper files are
-rewritten by running the folder's own notebook. The hand-written READMEs and
-the notebook itself are left alone.
+FINDINGS.md, the figures it shows, the notebooks' source files, the measure
+screen, and the shared sf2026.py are copied from the analysis. The section
+notebooks are regenerated and run by build_notebooks.py, and the Datawrapper
+files are rewritten by running export_datawrapper.ipynb. The hand-written
+READMEs and the export notebook itself are left alone.
 """
 
 from __future__ import annotations
@@ -19,13 +20,24 @@ import shutil
 import zipfile
 from pathlib import Path
 
+from build_notebooks import build as build_notebooks
+
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "output"
 REPO = ROOT.parent
 DRIVE = REPO / "sf-2026-drive"
 ZIP_PATH = REPO / "sf-2026-drive.zip"
 
-SOURCE_FILES = ["precinct_results.csv", "census_precinct.csv", "precincts.geojson"]
+SOURCE_FILES = [
+    "precinct_results.csv",
+    "census_precinct.csv",
+    "precincts.geojson",
+    "reconciliation.csv",
+    "citywide_trend.csv",
+    "citywide_party.csv",
+    "census_qc.json",
+    "measure_titles.json",
+]
 TABLE_FILES = ["measure_screening.csv"]
 # Fixed so an unchanged folder rebuilds to an identical zip.
 ZIP_TIMESTAMP = (2026, 11, 8, 16, 0, 0)
@@ -59,7 +71,7 @@ def run_notebook() -> None:
 
 
 def write_zip() -> None:
-    files = sorted(p for p in DRIVE.rglob("*") if p.is_file())
+    files = sorted(p for p in DRIVE.rglob("*") if p.is_file() and "__pycache__" not in p.parts)
     with zipfile.ZipFile(ZIP_PATH, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for path in files:
             info = zipfile.ZipInfo(str(path.relative_to(REPO)), date_time=ZIP_TIMESTAMP)
@@ -85,11 +97,15 @@ def main() -> None:
     for name in TABLE_FILES:
         shutil.copy2(OUT / name, DRIVE / "tables" / name)
 
+    shutil.copy2(ROOT / "sf2026.py", DRIVE / "notebooks" / "sf2026.py")
+
     missing = [p for p in referenced_paths(findings) if not (DRIVE / p).exists()]
     if missing:
         raise SystemExit(f"FINDINGS.md in the Drive folder points to files it does not have: {missing}")
 
+    build_notebooks(DRIVE, ROOT / "FINDINGS.md")
     run_notebook()
+    shutil.rmtree(DRIVE / "notebooks" / "__pycache__", ignore_errors=True)
     write_zip()
     print(f"{DRIVE.relative_to(REPO)} and {ZIP_PATH.name} rebuilt")
 
