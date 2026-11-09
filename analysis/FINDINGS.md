@@ -30,9 +30,9 @@ Hilton’s share rises with the non-Hispanic Asian share of the precinct (r = 0.
 
 ## CA-11
 
-Scott Wiener 157,394 (53.6 percent), Connie Chan 136,435 (46.4 percent). Both are Democrats, so the map uses a purple-orange scale. The district is 453 of 514 precincts. The other 61 are in CA-15 and are hatched gray on the map. They form the city’s southern band: the Excelsior, the Outer Mission, Oceanview–Merced–Ingleside, Portola, and Visitacion Valley. The Lake Merced corner in the southwest is in CA-11.
+Scott Wiener 157,394 (53.6 percent), Connie Chan 136,435 (46.4 percent). Both are Democrats, so the map uses a purple-orange scale. The district is 453 of 514 precincts. The other 61 are in CA-15 and are hatched gray on the map. They form the city’s southern band. 56 of them are in the Excelsior, the Outer Mission, Oceanview–Merced–Ingleside, Portola, and Visitacion Valley, and the other five are around McLaren Park and in Bayview. The Lake Merced corner in the southwest is in CA-11.
 
-Precinct shares inside the district, among those with at least 50 ballots, run from 35.2 percent to 46.8 percent to 59.0 percent. Chan leads in the Sunset and the Richmond. Wiener leads through the center and the northern neighborhoods. Counting CA-11 precincts only, Chan’s share is 58.9 percent in supervisor District 4, 53.2 percent in District 9, and 51.0 percent in District 1. It is 37.2 percent in District 8 and 37.5 percent in District 2. Supervisor District 11 contributes only 1,745 votes to this race, because most of that supervisor district sits in CA-15. Those votes are 58.2 percent Chan.
+Precinct shares inside the district, among those with at least 50 ballots, run from 35.2 percent to 46.8 percent to 59.0 percent. Chan leads in the Sunset, the Outer Richmond, the Mission, Bayview, and Chinatown. Wiener leads in the Inner Richmond, the Castro, Noe Valley, and most of the north side, from the Marina to Pacific Heights. Counting CA-11 precincts only, Chan’s share is 58.9 percent in supervisor District 4, 53.2 percent in District 9, and 51.0 percent in District 1. It is 37.2 percent in District 8 and 37.5 percent in District 2. Supervisor District 11 contributes only 1,745 votes to this race, because most of that supervisor district sits in CA-15. Those votes are 58.2 percent Chan.
 
 Chan’s share is lower where the non-Hispanic white share is higher (r = −0.70) and where the bachelor’s-degree share is higher (r = −0.63). It rises with the non-Hispanic Asian share (r = 0.55) and with the foreign-born share (r = 0.48). Those four move together across the west side of the district.
 
@@ -84,7 +84,7 @@ The yes share rises with the Hispanic share of the precinct (r = 0.50) and with 
 
 Changes to the ballot measure process. Yes 175,442, No 146,680. The yes share is 54.5 percent.
 
-Precinct shares run from 43.7 percent to 51.7 percent to 67.2 percent. The split runs north to south. The correlation with easting is 0.01, and the correlation with latitude is 0.37. The north voted yes heavily. District 2 is 67.7 percent yes. Districts 6, 8, and 7 are 58.7, 58.5, and 58.2 percent. Four districts are under half: District 9 (the Mission, Bernal Heights, and Portola) is 44.6 percent, District 11 (the Excelsior, the Outer Mission, and Oceanview) is 48.1 percent, District 4 (the Sunset) is 48.9 percent, and District 5 (the Western Addition, Hayes Valley, the Haight, and the Tenderloin) is 49.4 percent. The spread from District 9 to District 2 is 23.1 points.
+Precinct shares run from 43.7 percent to 51.7 percent to 67.2 percent. The split runs north to south. The correlation with easting is 0.01, and the correlation with latitude is 0.37. The north voted yes heavily. District 2 is 67.7 percent yes. Districts 6, 8, and 7 are 58.7, 58.5, and 58.2 percent. Four districts are under half: District 9 (the Mission, Bernal Heights, and Portola) is 44.6 percent, District 11 (the Excelsior, the Outer Mission, and Oceanview) is 48.1 percent, District 4 (the Sunset) is 48.9 percent, and District 5 (the Western Addition, Hayes Valley, the Haight, and the Tenderloin) is 49.4 percent. The spread from District 9 to District 2 is 23.0 points.
 
 The yes share rises with the non-Hispanic white share of the precinct (r = 0.58) and with the bachelor’s-degree share (r = 0.55). It is lower where the Hispanic share is higher (r = −0.53). Households at $150,000 or more move with the yes share as well (r = 0.46).
 
@@ -92,7 +92,7 @@ The yes share rises with the non-Hispanic white share of the precinct (r = 0.58)
 
 ## Where the other local measures sit
 
-The screen is `output/measure_screening.csv`. A measure besides the four above was left unmapped when the citywide yes share was more than 5 points from 50 and the east-west correlation was under 0.5. Supervisor-district spreads of 18 to 28 points are ordinary here, so spread alone did not earn a map.
+The screen is `output/measure_screening.csv`. A measure besides the four above was left unmapped when the citywide yes share was more than 5 points from 50 and the east-west correlation was under 0.5. Supervisor-district spreads of 18.2 to 28.5 points are ordinary here, so spread alone did not earn a map.
 
 | Measure | Yes share | East-west r | In one line |
 | --- | ---: | ---: | --- |
