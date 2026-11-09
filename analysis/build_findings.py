@@ -9,7 +9,6 @@ not committed. Run from the repository root:
 from __future__ import annotations
 
 import json
-import math
 import re
 import urllib.request
 from pathlib import Path
@@ -17,11 +16,18 @@ from pathlib import Path
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib.colors import Normalize, TwoSlopeNorm
-from matplotlib.patches import Patch
-from matplotlib.ticker import PercentFormatter
 
 from parse_sov import parse_sov, parse_summary_xml, reconcile
+from sf2026 import (
+    MIN_BALLOTS,
+    census_scatter,
+    choropleth,
+    district_bars,
+    district_lines,
+    line_chart,
+    screen_measures,
+    symmetric_limits,
+)
 
 ROOT = Path(__file__).resolve().parent
 RAW = ROOT / "raw"
@@ -50,12 +56,6 @@ MEASURES_URL = (
 )
 PARTY_URL = f"{BASE}/tools/election_data/registration_by_party.php"
 
-MIN_BALLOTS = 50
-SOURCE = (
-    "San Francisco Department of Elections, Preliminary Statement of the Vote, "
-    "Report 9 (November 8, 2026, 5:00 p.m. Phoenix / 4:00 p.m. Pacific). "
-    "Precincts: DataSF Election Precincts, defined 2022."
-)
 
 
 def _download(url: str, dest: Path) -> None:
@@ -159,211 +159,6 @@ def load_precincts(geo_path: Path, crosswalk_path: Path) -> gpd.GeoDataFrame:
     return gdf
 
 
-def district_lines(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    return gdf.dissolve(by="Supervisorial", as_index=False)
-
-
-def symmetric_limits(values: pd.Series, center: float = 0.5, step: float = 0.05) -> tuple[float, float]:
-    """Diverging-scale limits, equal on both sides of center, that hold every value."""
-    spread = (values.dropna() - center).abs().max()
-    half = math.ceil(round(spread / step, 9)) * step
-    return round(center - half, 2), round(center + half, 2)
-
-
-def choropleth(
-    gdf: gpd.GeoDataFrame,
-    column: str,
-    path: Path,
-    title: str,
-    subtitle: str,
-    cbar_label: str,
-    cmap: str,
-    vmin: float,
-    vmax: float,
-    vcenter: float | None = None,
-    districts: gpd.GeoDataFrame | None = None,
-    missing_label: str = "Fewer than 50 ballots",
-) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    projected = gdf.to_crs(26910)
-    colored = projected[projected[column].notna()]
-    low, high = colored[column].min(), colored[column].max()
-    # A value past the color bar would print in the end color and read as that value.
-    if low < vmin or high > vmax:
-        raise ValueError(
-            f"{path.name}: values run {low:.3f}–{high:.3f}, outside the color scale {vmin}–{vmax}"
-        )
-    fig, ax = plt.subplots(figsize=(8.2, 8.8))
-    # Hatched so a precinct with no rate can't be mistaken for one near the scale's light middle.
-    projected.plot(ax=ax, facecolor="#d4d4d4", edgecolor="#a6a6a6", hatch="//////", linewidth=0)
-    projected.plot(ax=ax, facecolor="none", edgecolor="white", linewidth=0.12)
-    if vcenter is None:
-        norm = Normalize(vmin=vmin, vmax=vmax)
-    else:
-        norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
-    colored.plot(
-        ax=ax,
-        column=column,
-        cmap=cmap,
-        norm=norm,
-        edgecolor="white",
-        linewidth=0.12,
-        legend=False,
-    )
-    if districts is not None:
-        districts.to_crs(26910).boundary.plot(ax=ax, color="#222222", linewidth=0.65)
-    mappable = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
-    colorbar = fig.colorbar(mappable, ax=ax, fraction=0.033, pad=0.01)
-    if vmax <= 1.5:
-        colorbar.ax.yaxis.set_major_formatter(PercentFormatter(xmax=1, decimals=0))
-    colorbar.set_label(cbar_label)
-    if len(colored) < len(projected):
-        ax.legend(
-            handles=[
-                Patch(facecolor="#d4d4d4", edgecolor="#a6a6a6", hatch="//////", label=missing_label)
-            ],
-            loc="lower left",
-            frameon=False,
-            fontsize=8,
-        )
-    ax.set_axis_off()
-    fig.suptitle(title, x=0.02, ha="left", fontsize=13, color="#1a1a1a")
-    ax.set_title(subtitle, loc="left", fontsize=8.5, color="#444444", pad=8)
-    fig.text(0.02, 0.012, SOURCE, fontsize=6.5, color="#666666", ha="left", wrap=True)
-    fig.tight_layout(rect=(0, 0.03, 1, 0.96))
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-
-
-def line_chart(trend: pd.DataFrame, path: Path) -> None:
-    measure = trend[trend["contest"] == "Measure B"].copy()
-    yes = measure[measure["choice"] == "YES"].set_index("report")["votes"]
-    no = measure[measure["choice"] == "NO"].set_index("report")["votes"]
-    reports = sorted(yes.index)
-    percent = [100 * yes[r] / (yes[r] + no[r]) for r in reports]
-    ballots = (
-        measure.drop_duplicates("report").set_index("report").loc[reports, "ballots_counted"]
-    )
-    fig, ax = plt.subplots(figsize=(8.2, 4.6))
-    ax.axhline(50, color="#999999", linewidth=0.8, linestyle="--")
-    ax.plot(reports, percent, color="#1f4e79", marker="o", linewidth=2)
-    for report, value in zip(reports, percent):
-        # Report 5 was 49.96% and still a No lead. One decimal would print 50.0%.
-        text = f"{value:.2f}%" if abs(value - 50) < 0.15 else f"{value:.1f}%"
-        ax.annotate(
-            text,
-            (report, value),
-            textcoords="offset points",
-            xytext=(0, 8),
-            ha="center",
-            fontsize=8,
-            color="#1a1a1a",
-        )
-    labels = [f"Report {r}\n{int(ballots.loc[r]) / 1000:.0f}k" for r in reports]
-    ax.set_xticks(reports)
-    ax.set_xticklabels(labels, fontsize=7.5)
-    ax.set_ylabel("Yes share of Yes + No (%)")
-    ax.set_ylim(46, 56)
-    ax.set_title(
-        "Measure B crossed 50% between the November 4 and November 5 reports",
-        loc="left",
-        fontsize=12,
-        color="#1a1a1a",
-    )
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    fig.text(
-        0.01,
-        0.01,
-        "Yes share of counted Yes and No votes. San Francisco Department of Elections summary reports 1 and 4–9. "
-        "Reports 2 and 3 were not available for this pull.",
-        fontsize=6.5,
-        color="#666666",
-    )
-    fig.tight_layout(rect=(0, 0.05, 1, 1))
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-
-
-def district_bars(
-    frame: pd.DataFrame,
-    column: str,
-    path: Path,
-    title: str,
-    xlabel: str,
-    reference: float | None = 50,
-) -> pd.DataFrame:
-    rows = []
-    for district, part in frame.dropna(subset=["Supervisorial"]).groupby("Supervisorial"):
-        weight = part["weight"].sum()
-        if weight <= 0:
-            continue
-        rows.append(
-            {
-                "district": int(district),
-                "share": 100 * part[column].mul(part["weight"]).sum() / weight,
-                "weight": weight,
-            }
-        )
-    grouped = pd.DataFrame(rows).sort_values("district")
-    fig, ax = plt.subplots(figsize=(7.4, 4.4))
-    ax.barh(
-        [f"District {d}" for d in grouped["district"]],
-        grouped["share"],
-        color="#1f4e79",
-    )
-    if reference is not None:
-        ax.axvline(reference, color="#999999", linewidth=0.8, linestyle="--")
-    ax.set_xlabel(xlabel)
-    ax.set_title(title, loc="left", fontsize=12, color="#1a1a1a")
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    fig.tight_layout()
-    fig.savefig(path, dpi=160)
-    plt.close(fig)
-    return grouped
-
-
-def _screen_measures(gdf: gpd.GeoDataFrame, contests: list[str]) -> pd.DataFrame:
-    rows = []
-    projected = gdf.to_crs(26910)
-    projected["easting"] = projected.geometry.centroid.x
-    for contest in contests:
-        slug = re.sub(r"[^a-z0-9]+", "_", contest.lower()).strip("_")
-        yes_col = f"{slug}__yes"
-        no_col = f"{slug}__no"
-        if yes_col not in gdf.columns:
-            continue
-        eligible = projected[(projected[yes_col] + projected[no_col]) >= MIN_BALLOTS].copy()
-        yes = eligible[yes_col].sum()
-        no = eligible[no_col].sum()
-        # Citywide figures should include small precincts too.
-        yes_all = projected[yes_col].sum()
-        no_all = projected[no_col].sum()
-        eligible["share"] = eligible[yes_col] / (eligible[yes_col] + eligible[no_col])
-        correlation = eligible["share"].corr(eligible["easting"])
-        district_shares = []
-        for _district, part in eligible.groupby("Supervisorial"):
-            votes = part[yes_col].sum() + part[no_col].sum()
-            if votes < 500:
-                continue
-            district_shares.append(100 * part[yes_col].sum() / votes)
-        spread = (max(district_shares) - min(district_shares)) if district_shares else 0
-        yes_pct = 100 * yes_all / (yes_all + no_all) if (yes_all + no_all) else None
-        rows.append(
-            {
-                "contest": contest,
-                "yes": int(yes_all),
-                "no": int(no_all),
-                "yes_pct": yes_pct,
-                "margin_points": (yes_pct - 50) * 2 if yes_pct is not None else None,
-                "district_spread_points": spread,
-                "east_west_r": correlation,
-                "precincts_in_correlation": int(len(eligible)),
-            }
-        )
-    return pd.DataFrame(rows).sort_values("contest")
-
 
 def write_census_charts() -> None:
     """Scatters of precinct vote shares against apportioned census characteristics."""
@@ -434,34 +229,9 @@ def write_census_charts() -> None:
             subset = subset[subset["Congressional"] == 11]
         if subset.empty:
             continue
-        fig, ax = plt.subplots(figsize=(7.2, 5.2))
-        sizes = (subset["ballots"] / subset["ballots"].max()) * 180 + 12
-        ax.scatter(
-            subset[ycol] * 100,
-            subset[xcol_vote] * 100,
-            s=sizes,
-            c="#1f4e79",
-            alpha=0.75,
-            linewidths=0,
+        correlation = census_scatter(
+            subset, xcol_vote, ycol, FIG / filename, title, xlabel, ylabel
         )
-        correlation = subset[xcol_vote].corr(subset[ycol])
-        ax.set_xlabel(xlabel)
-        ax.set_ylabel(ylabel)
-        ax.set_title(title, loc="left", fontsize=12)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        fig.text(
-            0.01,
-            0.01,
-            f"Precincts with at least {MIN_BALLOTS} ballots and group quarters under 25% of population. "
-            f"Dot size is ballots cast. Pearson r = {correlation:.2f}.\n"
-            "These are precinct patterns, not individual votes.",
-            fontsize=7,
-            color="#666666",
-        )
-        fig.tight_layout(rect=(0, 0.08, 1, 1))
-        fig.savefig(FIG / filename, dpi=160)
-        plt.close(fig)
         notes.append({"chart": filename, "r": round(float(correlation), 3), "n": int(len(subset))})
     (OUT / "census_chart_correlations.json").write_text(json.dumps(notes, indent=2))
 
@@ -564,7 +334,7 @@ def main() -> None:
     map_gdf = gdf[gdf["registered"].fillna(0) > 0].copy()
     districts = district_lines(map_gdf)
 
-    screening = _screen_measures(gdf, local)
+    screening = screen_measures(gdf, local)
     screening["title"] = screening["contest"].map(titles)
     screening.to_csv(OUT / "measure_screening.csv", index=False)
 
