@@ -9,6 +9,7 @@ not committed. Run from the repository root:
 from __future__ import annotations
 
 import json
+import math
 import re
 import urllib.request
 from pathlib import Path
@@ -17,6 +18,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.colors import Normalize, TwoSlopeNorm
+from matplotlib.patches import Patch
 from matplotlib.ticker import PercentFormatter
 
 from parse_sov import parse_sov, parse_summary_xml, reconcile
@@ -161,6 +163,13 @@ def district_lines(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
     return gdf.dissolve(by="Supervisorial", as_index=False)
 
 
+def symmetric_limits(values: pd.Series, center: float = 0.5, step: float = 0.05) -> tuple[float, float]:
+    """Diverging-scale limits, equal on both sides of center, that hold every value."""
+    spread = (values.dropna() - center).abs().max()
+    half = math.ceil(round(spread / step, 9)) * step
+    return round(center - half, 2), round(center + half, 2)
+
+
 def choropleth(
     gdf: gpd.GeoDataFrame,
     column: str,
@@ -173,12 +182,21 @@ def choropleth(
     vmax: float,
     vcenter: float | None = None,
     districts: gpd.GeoDataFrame | None = None,
+    missing_label: str = "Fewer than 50 ballots",
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     projected = gdf.to_crs(26910)
-    fig, ax = plt.subplots(figsize=(8.2, 8.8))
-    projected.plot(ax=ax, color="#efefef", edgecolor="white", linewidth=0.12)
     colored = projected[projected[column].notna()]
+    low, high = colored[column].min(), colored[column].max()
+    # A value past the color bar would print in the end color and read as that value.
+    if low < vmin or high > vmax:
+        raise ValueError(
+            f"{path.name}: values run {low:.3f}–{high:.3f}, outside the color scale {vmin}–{vmax}"
+        )
+    fig, ax = plt.subplots(figsize=(8.2, 8.8))
+    # Hatched so a precinct with no rate can't be mistaken for one near the scale's light middle.
+    projected.plot(ax=ax, facecolor="#d4d4d4", edgecolor="#a6a6a6", hatch="//////", linewidth=0)
+    projected.plot(ax=ax, facecolor="none", edgecolor="white", linewidth=0.12)
     if vcenter is None:
         norm = Normalize(vmin=vmin, vmax=vmax)
     else:
@@ -199,6 +217,15 @@ def choropleth(
     if vmax <= 1.5:
         colorbar.ax.yaxis.set_major_formatter(PercentFormatter(xmax=1, decimals=0))
     colorbar.set_label(cbar_label)
+    if len(colored) < len(projected):
+        ax.legend(
+            handles=[
+                Patch(facecolor="#d4d4d4", edgecolor="#a6a6a6", hatch="//////", label=missing_label)
+            ],
+            loc="lower left",
+            frameon=False,
+            fontsize=8,
+        )
     ax.set_axis_off()
     fig.suptitle(title, x=0.02, ha="left", fontsize=13, color="#1a1a1a")
     ax.set_title(subtitle, loc="left", fontsize=8.5, color="#444444", pad=8)
@@ -427,12 +454,12 @@ def write_census_charts() -> None:
             0.01,
             0.01,
             f"Precincts with at least {MIN_BALLOTS} ballots and group quarters under 25% of population. "
-            f"Dot size is ballots cast. Pearson r = {correlation:.2f}. "
+            f"Dot size is ballots cast. Pearson r = {correlation:.2f}.\n"
             "These are precinct patterns, not individual votes.",
             fontsize=7,
             color="#666666",
         )
-        fig.tight_layout(rect=(0, 0.06, 1, 1))
+        fig.tight_layout(rect=(0, 0.08, 1, 1))
         fig.savefig(FIG / filename, dpi=160)
         plt.close(fig)
         notes.append({"chart": filename, "r": round(float(correlation), 3), "n": int(len(subset))})
@@ -530,8 +557,10 @@ def main() -> None:
         "measure_b_yes_share", gdf["measure_b__yes"].fillna(0) + gdf["measure_b__no"].fillna(0)
     )
     gdf["added_mapped"] = gdf["added_yes_share"].where(gdf["added_ballots"] >= 30)
-    # Angel Island and Alameda Island are zero-voter boundary precincts. They
-    # stay in the data file and come off the map so they don't shrink the city.
+    # Four precincts have no registered voters: Angel Island (9904), Alameda
+    # Island (9903), and two small inland ones in Outer Mission (9901) and
+    # Portola (9902). They stay in the data file and come off the maps; the
+    # islands would otherwise shrink the city.
     map_gdf = gdf[gdf["registered"].fillna(0) > 0].copy()
     districts = district_lines(map_gdf)
 
@@ -544,10 +573,10 @@ def main() -> None:
         "turnout_mapped",
         FIG / "turnout.png",
         "Turnout by precinct",
-        "Ballots counted divided by registered voters. Precincts under 50 ballots are gray.",
+        "Ballots counted divided by registered voters. Precincts under 50 ballots are hatched gray.",
         "Turnout",
         "YlGnBu",
-        vmin=0.35,
+        vmin=0.25,
         vmax=0.85,
         districts=districts,
     )
@@ -559,7 +588,7 @@ def main() -> None:
         "Mail ballots divided by ballots cast. Citywide, mail is about 89% of the count.",
         "Mail share",
         "PuBu",
-        vmin=0.7,
+        vmin=0.55,
         vmax=1.0,
         districts=districts,
     )
@@ -580,24 +609,23 @@ def main() -> None:
         "chan_mapped",
         FIG / "ca11_chan.png",
         "CA-11: Connie Chan's share of the two-candidate vote",
-        "Scott Wiener and Connie Chan, both Democrats. Gray precincts are outside District 11 or under 50 ballots.",
+        "Scott Wiener and Connie Chan, both Democrats. Hatched gray precincts are in CA-15 or cast under 50 ballots.",
         "Chan share",
         "PuOr",
-        vmin=0.30,
-        vmax=0.70,
+        *symmetric_limits(gdf["chan_mapped"]),
         vcenter=0.50,
         districts=districts,
+        missing_label="In CA-15, or fewer than 50 ballots",
     )
     choropleth(
         map_gdf,
         "measure_b_mapped",
         FIG / "measure_b_yes.png",
         "Measure B: yes share",
-        f"{titles.get('Measure B', 'Measure B')}. Gray precincts cast fewer than 50 ballots.",
+        f"{titles.get('Measure B', 'Measure B')}. Hatched gray precincts cast fewer than 50 ballots.",
         "Yes share",
         "BrBG",
-        vmin=0.35,
-        vmax=0.65,
+        *symmetric_limits(gdf["measure_b_mapped"]),
         vcenter=0.50,
         districts=districts,
     )
@@ -606,13 +634,13 @@ def main() -> None:
         "added_mapped",
         FIG / "measure_b_ballots_after_nov4.png",
         "Measure B: yes share of ballots counted after November 4",
-        "Votes added between Report 5 (No still ahead) and Report 9. Precincts with fewer than 30 added votes are gray.",
+        "Votes added between Report 5 (No still ahead) and Report 9. Precincts with fewer than 30 added votes are hatched gray.",
         "Yes share of added votes",
         "BrBG",
-        vmin=0.35,
-        vmax=0.75,
+        *symmetric_limits(gdf["added_mapped"]),
         vcenter=0.50,
         districts=districts,
+        missing_label="Fewer than 30 added votes",
     )
 
     # Every local measure varies by supervisor district. Map the close ones and
@@ -636,11 +664,10 @@ def main() -> None:
             f"{slug}_mapped",
             FIG / f"{slug}_yes.png",
             f"{contest}: yes share",
-            titles.get(contest, contest),
+            f"{titles.get(contest, contest)}. Hatched gray precincts cast fewer than 50 ballots.",
             "Yes share",
             "BrBG",
-            vmin=0.30,
-            vmax=0.70,
+            *symmetric_limits(gdf[f"{slug}_mapped"]),
             vcenter=0.50,
             districts=districts,
         )
@@ -663,7 +690,7 @@ def main() -> None:
         ca_frame,
         "chan_share",
         FIG / "ca11_by_district.png",
-        "CA-11 Chan share, by supervisor district (District 11 precincts only)",
+        "CA-11: Chan share by supervisor district (CA-11 precincts only)",
         "Chan share of the two-candidate vote (%)",
     )
     b_frame = gdf.copy()
