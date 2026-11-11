@@ -1,0 +1,32 @@
+[
+  {
+    "chart": "measure_b_vs_renters.png",
+    "r": 0.437,
+    "n": 498
+  },
+  {
+    "chart": "measure_b_vs_hispanic.png",
+    "r": 0.546,
+    "n": 498
+  },
+  {
+    "chart": "ca11_vs_asian.png",
+    "r": 0.554,
+    "n": 438
+  },
+  {
+    "chart": "governor_vs_asian.png",
+    "r": 0.696,
+    "n": 498
+  },
+  {
+    "chart": "measure_g_vs_asian.png",
+    "r": 0.673,
+    "n": 498
+  },
+  {
+    "chart": "turnout_vs_bachelors.png",
+    "r": 0.804,
+    "n": 498
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "blocks": 5986,
+  "blocks_split": 33,
+  "population_in_split_blocks": 3007,
+  "population_total": 873965,
+  "population_assigned": 873965,
+  "split_population_share": 0.0034406412156093207,
+  "unsplit_blocks_where_internal_point_disagrees": 0,
+  "population_where_internal_point_disagrees": 0
+}
