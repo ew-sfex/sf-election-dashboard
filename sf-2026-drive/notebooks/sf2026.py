@@ -23,9 +23,13 @@ from matplotlib.ticker import PercentFormatter
 MIN_BALLOTS = 50
 MAX_GROUP_QUARTERS = 0.25
 PROJECTED_CRS = 26910
+# The Statement of the Vote report every table, figure, and notebook uses.
+REPORT_NUMBER = 11
+REPORT_FOLDER = "20261110"
+REPORT_RELEASED = "November 10, 2026, 5:00 p.m. Phoenix / 4:00 p.m. Pacific"
 SOURCE = (
     "San Francisco Department of Elections, Preliminary Statement of the Vote, "
-    "Report 9 (November 8, 2026, 5:00 p.m. Phoenix / 4:00 p.m. Pacific). "
+    f"Report {REPORT_NUMBER} ({REPORT_RELEASED}). "
     "Precincts: DataSF Election Precincts, defined 2022."
 )
 CENSUS_SHARES = {
@@ -166,7 +170,7 @@ def line_chart(trend: pd.DataFrame, path: Path | None) -> None:
     fig.text(
         0.01,
         0.01,
-        "Yes share of counted Yes and No votes. San Francisco Department of Elections summary reports 1 and 4–9. "
+        f"Yes share of counted Yes and No votes. San Francisco Department of Elections summary reports 1 and 4–{max(reports)}. "
         "Reports 2 and 3 were not available for this pull.",
         fontsize=6.5,
         color="#666666",

@@ -228,10 +228,10 @@ NOTEBOOKS = [
             code(
                 """
                 party = pd.read_csv(ROOT / "source" / "citywide_party.csv").set_index("group")["registered"]
-                check.number("Registered voters, party page", 541778, party["Total Registration"], 0)
-                check.number("Democratic", 337357, party["Democratic"], 0)
-                check.number("Republican", 40457, party["Republican"], 0)
-                check.number("No party preference or unknown", 141468, party["No Party Preference/Unknown"], 0)
+                check.number("Registered voters, party page", 543430, party["Total Registration"], 0)
+                check.number("Democratic", 338535, party["Democratic"], 0)
+                check.number("Republican", 40517, party["Republican"], 0)
+                check.number("No party preference or unknown", 141829, party["No Party Preference/Unknown"], 0)
                 check.number("Registered voters, Statement of the Vote", 535608, data["registered"].sum(), 0)
                 party.to_frame()
                 """
@@ -240,15 +240,24 @@ NOTEBOOKS = [
             code(
                 """
                 ballots, registered, mail = data["ballots"].sum(), data["registered"].sum(), data["mail_ballots"].sum()
-                check.number("Turnout, percent", 64.01, 100 * ballots / registered, 2)
-                check.number("Ballots counted", 342844, ballots, 0)
-                check.number("Mail ballots", 304904, mail, 0)
-                check.number("Mail share, percent", 88.93, 100 * mail / ballots, 2)
-                check.number("Election-day ballots", 37940, ballots - mail, 0)
+                check.number("Turnout, percent", 65.63, 100 * ballots / registered, 2)
+                check.number("Ballots counted", 351502, ballots, 0)
+                check.number("Mail ballots", 308186, mail, 0)
+                check.number("Mail share, percent", 87.68, 100 * mail / ballots, 2)
+                check.number("Election-day ballots", 43316, ballots - mail, 0)
 
                 share = data["ballots"] / data["registered"].where(data["registered"] > 0)
-                enough = data["ballots"] >= sf.MIN_BALLOTS
-                for name, memo, value in zip(["10th", "50th", "90th"], [47.8, 66.1, 76.2], sf.percentile_range(share, enough)):
+                over = data.loc[share > 1, ["precinct_id", "Neighborhood", "registered", "ballots"]]
+                p9723 = data.set_index("precinct_id").loc[9723]
+                check.fact("Precincts reporting more ballots than registered voters", "9723", over["precinct_id"].tolist(), over["precinct_id"].tolist() == [9723])
+                check.number("Precinct 9723 ballots", 840, p9723["ballots"], 0)
+                check.number("Precinct 9723 registered voters", 772, p9723["registered"], 0)
+                check.number("Precinct 9723 election-day ballots", 534, p9723["ballots"] - p9723["mail_ballots"], 0)
+                display(over)
+                # A rate over 100 percent isn't a turnout. The memo leaves it out of the range and the map.
+                share = share.where(share <= 1)
+                enough = (data["ballots"] >= sf.MIN_BALLOTS) & share.notna()
+                for name, memo, value in zip(["10th", "50th", "90th"], [49.3, 67.3, 77.7], sf.percentile_range(share, enough)):
                     check.number(f"Precinct turnout, {name} percentile", memo, value)
 
                 grouped = data.groupby("Supervisorial")[["ballots", "registered"]].sum()
@@ -258,13 +267,14 @@ NOTEBOOKS = [
             code(
                 """
                 sf.rate_map(data, share, data["ballots"], "Turnout by precinct",
-                            "Ballots counted divided by registered voters. Precincts under 50 ballots are hatched gray.",
-                            "Turnout", cmap="YlGnBu", diverging=False, limits=(0.25, 0.85))
+                            "Ballots counted divided by registered voters. Hatched gray precincts cast under 50 ballots or report more ballots than voters.",
+                            "Turnout", cmap="YlGnBu", diverging=False, limits=(0.25, 0.90),
+                            missing_label="Fewer than 50 ballots, or more ballots than registered voters")
                 """
             ),
             code(
                 f"""
-                {census_checks({"Bachelor's degree or higher": 0.80, "Non-Hispanic white": 0.79})}
+                {census_checks({"Bachelor's degree or higher": 0.81, "Non-Hispanic white": 0.80})}
                 keep = sf.census_frame(data)
                 sf.census_scatter(data[keep].assign(share=share[keep]), "share", "ba_share", None,
                                   "Turnout and bachelor’s degrees", "Bachelor’s degree or higher, share of adults 25+", "Turnout (%)");
@@ -306,8 +316,8 @@ NOTEBOOKS = [
             code(
                 """
                 city = sf.citywide(data, "hilton", "becerra")
-                check.number("Becerra votes", 280594, city["becerra"], 0)
-                check.number("Hilton votes", 50784, city["hilton"], 0)
+                check.number("Becerra votes", 287632, city["becerra"], 0)
+                check.number("Hilton votes", 51897, city["hilton"], 0)
                 check.number("Hilton share of the two-candidate vote, percent", 15.3, city["share_pct"])
                 city
                 """
@@ -316,9 +326,9 @@ NOTEBOOKS = [
             code(two_way_section("hilton", "becerra", "Hilton share")),
             code(
                 f"""
-                {range_check(6.8, 15.4, 25.4)}
-                {district_checks("Hilton share", {4: 23.7, 11: 20.9, 2: 18.5, 7: 17.4, 8: 7.5, 9: 9.8, 5: 9.9})}
-                {spread_check(4, 8, 16.2)}
+                {range_check(7.0, 15.4, 25.4)}
+                {district_checks("Hilton share", {4: 23.6, 11: 20.7, 2: 18.5, 7: 17.1, 8: 7.5, 9: 9.8, 5: 10.0})}
+                {spread_check(4, 8, 16.1)}
                 """
             ),
             code(
@@ -333,7 +343,7 @@ NOTEBOOKS = [
             md("## Census comparison"),
             code(
                 f"""
-                {census_checks({"Non-Hispanic Asian": 0.70, "Foreign born": 0.54, "Non-Hispanic white": -0.45, "Renters": -0.40})}
+                {census_checks({"Non-Hispanic Asian": 0.69, "Foreign born": 0.54, "Non-Hispanic white": -0.44, "Renters": -0.39})}
                 keep = sf.census_frame(data)
                 sf.census_scatter(data[keep].assign(share=share[keep]), "share", "nh_asian_share", None,
                                   "Governor and Asian population", "Non-Hispanic Asian share of 2020 population",
@@ -351,10 +361,10 @@ NOTEBOOKS = [
                 """
                 in_ca11 = data["Congressional"] == 11
                 city = sf.citywide(data, "wiener", "chan")
-                check.number("Wiener votes", 157394, city["wiener"], 0)
-                check.number("Wiener share, percent", 53.6, city["share_pct"])
-                check.number("Chan votes", 136435, city["chan"], 0)
-                check.number("Chan share, percent", 46.4, 100 - city["share_pct"])
+                check.number("Wiener votes", 160400, city["wiener"], 0)
+                check.number("Wiener share, percent", 53.3, city["share_pct"])
+                check.number("Chan votes", 140395, city["chan"], 0)
+                check.number("Chan share, percent", 46.7, 100 - city["share_pct"])
                 check.number("Precincts in CA-11", 453, in_ca11.sum(), 0)
                 check.number("Precincts in CA-15", 61, (data["Congressional"] == 15).sum(), 0)
                 city
@@ -388,14 +398,14 @@ NOTEBOOKS = [
             ),
             code(
                 f"""
-                {range_check(35.2, 46.8, 59.0)}
+                {range_check(35.4, 47.2, 59.3)}
                 chan_leads = ["SUNSET/PARKSIDE", "OUTER RICHMOND", "MISSION", "BAYVIEW HUNTERS POINT", "CHINATOWN"]
                 wiener_leads = ["INNER RICHMOND", "CASTRO/UPPER MARKET", "NOE VALLEY", "MARINA", "PACIFIC HEIGHTS"]
                 check.fact("Chan leads", ", ".join(chan_leads), neighborhoods[chan_leads].round(1).tolist(), bool((neighborhoods[chan_leads] > 50).all()))
                 check.fact("Wiener leads", ", ".join(wiener_leads), neighborhoods[wiener_leads].round(1).tolist(), bool((neighborhoods[wiener_leads] < 50).all()))
-                {district_checks("Chan share", {4: 58.9, 9: 53.2, 1: 51.0, 8: 37.2, 2: 37.5, 11: 58.2})}
+                {district_checks("Chan share", {4: 59.0, 9: 53.4, 1: 51.2, 8: 37.4, 2: 37.6, 11: 58.6})}
                 sd11 = ca11[ca11["Supervisorial"] == 11]
-                check.number("Supervisor District 11 votes in this race", 1745, sd11["chan"].sum() + sd11["wiener"].sum(), 0)
+                check.number("Supervisor District 11 votes in this race", 1784, sd11["chan"].sum() + sd11["wiener"].sum(), 0)
                 """
             ),
             code(
@@ -412,7 +422,7 @@ NOTEBOOKS = [
             code(
                 f"""
                 keep = sf.census_frame(data) & in_ca11
-                {census_checks({"Non-Hispanic white": -0.70, "Bachelor's degree or higher": -0.63, "Non-Hispanic Asian": 0.55, "Foreign born": 0.48}, keep="keep")}
+                {census_checks({"Non-Hispanic white": -0.71, "Bachelor's degree or higher": -0.64, "Non-Hispanic Asian": 0.55, "Foreign born": 0.48}, keep="keep")}
                 sf.census_scatter(data[keep].assign(share=share[keep]), "share", "nh_asian_share", None,
                                   "CA-11 and Asian population", "Non-Hispanic Asian share of 2020 population",
                                   "Connie Chan share of the two-candidate vote (%)");
@@ -426,12 +436,12 @@ NOTEBOOKS = [
         [
             code(
                 f"""
-                check.number("Yes votes", 164430, city["measure_b__yes"], 0)
-                check.number("No votes", 149904, city["measure_b__no"], 0)
-                check.number("Yes share, percent", 52.3, city["share_pct"])
-                {range_check(39.4, 53.1, 65.3)}
-                {district_checks("Yes share", {9: 64.1, 5: 62.1, 10: 55.4, 8: 54.0, 2: 41.0, 7: 45.2, 4: 45.8})}
-                {spread_check(9, 2, 23.1)}
+                check.number("Yes votes", 169415, city["measure_b__yes"], 0)
+                check.number("No votes", 152252, city["measure_b__no"], 0)
+                check.number("Yes share, percent", 52.7, city["share_pct"])
+                {range_check(39.3, 53.4, 65.5)}
+                {district_checks("Yes share", {9: 64.3, 5: 62.3, 10: 55.8, 8: 54.2, 2: 41.3, 7: 46.2, 4: 46.1})}
+                {spread_check(9, 2, 23.0)}
                 """
             ),
             code(
@@ -459,7 +469,7 @@ NOTEBOOKS = [
             md("## Census comparison"),
             code(
                 f"""
-                {census_checks({"Hispanic": 0.55, "Renters": 0.44, "Households at $150,000+": -0.44, "Foreign born": 0.07})}
+                {census_checks({"Hispanic": 0.55, "Renters": 0.43, "Households at $150,000+": -0.45, "Foreign born": 0.08})}
                 keep = sf.census_frame(data)
                 subset = data[keep].assign(share=share[keep])
                 sf.census_scatter(subset, "share", "hispanic_share", None, "Measure B and Hispanic population",
@@ -476,12 +486,12 @@ NOTEBOOKS = [
         [
             code(
                 f"""
-                check.number("Yes votes", 110545, city["measure_g__yes"], 0)
-                check.number("No votes", 210437, city["measure_g__no"], 0)
-                check.number("Yes share, percent", 34.4, city["share_pct"])
-                {range_check(18.9, 33.8, 51.6)}
-                {district_checks("Yes share", {1: 49.8, 4: 49.6, 11: 45.2, 7: 40.2, 8: 21.3, 5: 22.6, 6: 25.1})}
-                {spread_check(1, 8, 28.5)}
+                check.number("Yes votes", 112765, city["measure_g__yes"], 0)
+                check.number("No votes", 215803, city["measure_g__no"], 0)
+                check.number("Yes share, percent", 34.3, city["share_pct"])
+                {range_check(18.9, 33.8, 51.5)}
+                {district_checks("Yes share", {1: 49.6, 4: 49.4, 11: 45.0, 7: 39.9, 8: 21.3, 5: 22.6, 6: 25.2})}
+                {spread_check(1, 8, 28.3)}
                 """
             ),
             md("## The widest range, and the east-west split"),
@@ -502,7 +512,7 @@ NOTEBOOKS = [
                 check.fact("Widest precinct range of the six contests", "Measure G", ranges.idxmax(), ranges.idxmax() == "Measure G")
 
                 geography = sf.geography_correlations(data, share, votes >= sf.MIN_BALLOTS)
-                check.number("Correlation with easting", -0.52, geography["east-west (easting)"], 2)
+                check.number("Correlation with easting", -0.51, geography["east-west (easting)"], 2)
                 check.number("Correlation with latitude", -0.37, geography["north-south (latitude)"], 2)
                 screen = sf.screen_measures(data, sf.local_measures(data)).set_index("contest")
                 sharp = screen.index[screen["east_west_r"].abs() >= 0.5].tolist()
@@ -535,12 +545,12 @@ NOTEBOOKS = [
         [
             code(
                 f"""
-                check.number("Yes votes", 150595, city["measure_i__yes"], 0)
-                check.number("No votes", 163542, city["measure_i__no"], 0)
-                check.number("Yes share, percent", 47.9, city["share_pct"])
-                check.number("No lead, votes", 12947, -city["margin"], 0)
-                {range_check(35.1, 48.9, 60.8)}
-                {district_checks("Yes share", {9: 58.9, 5: 57.6, 6: 50.7, 10: 50.6, 2: 37.1, 7: 40.4, 4: 43.4})}
+                check.number("Yes votes", 155384, city["measure_i__yes"], 0)
+                check.number("No votes", 166070, city["measure_i__no"], 0)
+                check.number("Yes share, percent", 48.3, city["share_pct"])
+                check.number("No lead, votes", 10686, -city["margin"], 0)
+                {range_check(35.1, 49.3, 61.2)}
+                {district_checks("Yes share", {9: 59.2, 5: 57.9, 6: 51.0, 10: 51.0, 2: 37.4, 7: 41.4, 4: 43.7})}
                 {spread_check(9, 2, 21.8)}
                 """
             ),
@@ -564,7 +574,7 @@ NOTEBOOKS = [
             md("## Census comparison"),
             code(
                 f"""
-                {census_checks({"Hispanic": 0.50, "Renters": 0.48, "Households at $150,000+": -0.49})}
+                {census_checks({"Hispanic": 0.50, "Renters": 0.47, "Households at $150,000+": -0.49})}
                 """
             ),
         ],
@@ -575,17 +585,17 @@ NOTEBOOKS = [
         [
             code(
                 f"""
-                check.number("Yes votes", 175442, city["measure_d__yes"], 0)
-                check.number("No votes", 146680, city["measure_d__no"], 0)
-                check.number("Yes share, percent", 54.5, city["share_pct"])
-                {range_check(43.7, 51.7, 67.2)}
+                check.number("Yes votes", 178653, city["measure_d__yes"], 0)
+                check.number("No votes", 151011, city["measure_d__no"], 0)
+                check.number("Yes share, percent", 54.2, city["share_pct"])
+                {range_check(43.5, 51.5, 67.1)}
                 geography = sf.geography_correlations(data, share, votes >= sf.MIN_BALLOTS)
-                check.number("Correlation with easting", 0.01, geography["east-west (easting)"], 2)
-                check.number("Correlation with latitude", 0.37, geography["north-south (latitude)"], 2)
-                {district_checks("Yes share", {2: 67.7, 6: 58.7, 8: 58.5, 7: 58.2, 9: 44.6, 11: 48.1, 4: 48.9, 5: 49.4})}
+                check.number("Correlation with easting", 0.02, geography["east-west (easting)"], 2)
+                check.number("Correlation with latitude", 0.38, geography["north-south (latitude)"], 2)
+                {district_checks("Yes share", {2: 67.5, 6: 58.5, 8: 58.3, 7: 57.4, 9: 44.4, 11: 47.8, 4: 48.8, 5: 49.3})}
                 under = sorted(districts.index[districts < 50])
                 check.fact("Districts under half", "4, 5, 9, 11", under, under == [4, 5, 9, 11])
-                {spread_check(2, 9, 23.0)}
+                {spread_check(2, 9, 23.1)}
                 geography.to_frame()
                 """
             ),
@@ -607,7 +617,7 @@ NOTEBOOKS = [
             md("## Census comparison"),
             code(
                 f"""
-                {census_checks({"Non-Hispanic white": 0.58, "Bachelor's degree or higher": 0.55, "Hispanic": -0.53, "Households at $150,000+": 0.46})}
+                {census_checks({"Non-Hispanic white": 0.59, "Bachelor's degree or higher": 0.56, "Hispanic": -0.53, "Households at $150,000+": 0.47})}
                 """
             ),
         ],
@@ -634,20 +644,20 @@ NOTEBOOKS = [
                 mapped = sorted(screen.index[screen["mapped"]])
                 check.fact("Measures that earn a map", "B, D, G, I", mapped,
                            mapped == ["Measure B", "Measure D", "Measure G", "Measure I"])
-                check.number("Smallest supervisor-district spread, points", 18.2, screen["district_spread_points"].min())
-                check.number("Largest supervisor-district spread, points", 28.5, screen["district_spread_points"].max())
+                check.number("Smallest supervisor-district spread, points", 18.0, screen["district_spread_points"].min())
+                check.number("Largest supervisor-district spread, points", 28.3, screen["district_spread_points"].max())
                 screen[["title", "yes_pct", "east_west_r", "district_spread_points", "mapped"]]
                 """
             ),
             code(
                 """
-                table = {"A": (68.2, -0.06), "C": (81.7, 0.46), "E": (64.0, -0.03), "F": (59.7, -0.05),
-                         "H": (74.3, 0.37), "J": (80.9, 0.35), "RTM": (79.0, 0.42)}
+                table = {"A": (68.0, -0.06), "C": (81.8, 0.46), "E": (63.8, -0.03), "F": (59.5, -0.05),
+                         "H": (74.4, 0.37), "J": (80.9, 0.34), "RTM": (79.2, 0.42)}
                 for letter, (yes_pct, east_west) in table.items():
                     row = screen.loc[f"Measure {letter}"]
                     check.number(f"Measure {letter} yes share, percent", yes_pct, row["yes_pct"])
                     check.number(f"Measure {letter} east-west r", east_west, row["east_west_r"], 2)
-                    check.fact(f"Measure {letter} passed", "passed", f"{row['yes_pct']:.1f}% yes", row["yes_pct"] > 50)
+                    check.fact(f"Measure {letter} passing", "passing", f"{row['yes_pct']:.1f}% yes", row["yes_pct"] > 50)
                 """
             ),
         ],
