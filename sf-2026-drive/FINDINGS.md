@@ -74,7 +74,7 @@ The yes share rises with the non-Hispanic Asian share of the precinct (r = 0.67)
 
 Changes to the real property transfer tax. Yes 155,384, No 166,070. The yes share is 48.3 percent. No leads by 10,686 votes.
 
-Precinct shares run from 35.1 percent to 49.3 percent to 61.2 percent. The yes vote is stronger in the center and the east, in the same parts of the city as Measure B, a few points lower. District 9 is 59.2 percent yes and District 5 is 57.9 percent. District 6 and District 10 are both 51.0 percent. District 2 is 37.4 percent, District 7 is 41.4 percent, and District 4 is 43.7 percent. The spread from District 2 to District 9 is 21.8 points.
+Precinct shares run from 35.1 percent to 49.3 percent to 61.2 percent. The yes vote is stronger in the center and the east, in the same parts of the city as Measure B, a few points lower. It ran behind Measure B in every supervisor district, by 2.4 to 6.2 points. District 9 is 59.2 percent yes and District 5 is 57.9 percent. District 6 and District 10 are both 51.0 percent. District 2 is 37.4 percent, District 7 is 41.4 percent, and District 4 is 43.7 percent. The spread from District 2 to District 9 is 21.8 points.
 
 The yes share rises with the Hispanic share of the precinct (r = 0.50) and with the renter share (r = 0.47). It is lower where the share of households at $150,000 or more is higher (r = −0.49). The same three characteristics move with Measure B.
 
@@ -103,3 +103,19 @@ The screen is `tables/measure_screening.csv`. A measure besides the four above w
 | H, parcel tax for Muni | 74.4% | 0.37 | Passing, some eastward lean |
 | J, foreclosure exemption on the transfer tax | 80.9% | 0.34 | Passing in a landslide, some eastward lean |
 | RTM, regional transit measure | 79.2% | 0.42 | Passing in a landslide, some eastward lean |
+
+## The late count
+
+Report 5, published November 4, is the last report on which No led Measure B. Comparing each precinct's votes on that report with its votes on Report 11 separates the 206,320 ballots counted by November 4 from the 145,182 counted since.
+
+The votes counted after November 4 were more yes on Measures B and I, and more no on Measures D and G, than the votes counted before. Measure B was 49.96 percent yes through November 4 and 56.6 percent yes among the votes counted since. Measure I went from 45.3 percent to 52.8 percent, Measure D from 57.5 percent to 49.3 percent, and Measure G from 36.4 percent to 31.3 percent.
+
+The change happened inside precincts. It did not come from some parts of the city reporting later than others. Comparing precincts with at least 50 votes on a measure by November 4 and at least 30 since, the later votes were more yes on Measure B in 439 of 506 precincts and on Measure I in 463 of 504. They were less yes on Measure D in 474 of 506 and on Measure G in 419 of 506. The data does not say who cast the later ballots or why they differ.
+
+The lean grew stronger as the count went on. On Measure B, the votes added by the November 5 through November 7 reports were 54.1 to 56.2 percent yes, and the votes added by the November 8 through November 10 reports were 67.0 to 69.5 percent yes. Measure I's added votes went from 49.9–52.4 percent yes to 63.8–67.9 percent, and Measure D's from 49.8–50.7 percent to 41.3–43.4 percent.
+
+Measure B moved ahead on the November 5 report, which added 50,062 ballots, and has led on every report since. Its lead is now 17,163 votes. Measure I has trailed on every report. No led it by 18,064 votes on November 4 and leads by 10,686 now. Measure D has led on every report, but its yes share has fallen from 59.80 percent on election night to 54.19 percent.
+
+The Department has not said how many ballots are left to count. If the rest break like the votes added by the last two reports, which were 65.5 percent yes, Measure I needs about 34,600 more votes on the measure to pull even. At Report 11's rate of 91.5 votes on Measure I per 100 ballots, that is about 37,800 ballots. The last two reports added 5,094 and 3,564. Measure D, at the 42.6 percent yes of the last two reports, would need about 186,000 more votes to fall behind.
+
+![Late ballots and Measures B, I, and D](figures/late_count_trend.png)

@@ -179,6 +179,54 @@ def line_chart(trend: pd.DataFrame, path: Path | None) -> None:
     _finish(fig, path)
 
 
+LATE_COUNT_MEASURES = {"Measure B": "#1b7837", "Measure I": "#5aae61", "Measure D": "#762a83"}
+
+
+def late_count_chart(trend: pd.DataFrame, path: Path | None) -> None:
+    fig, ax = plt.subplots(figsize=(8.2, 4.8))
+    ax.axhline(50, color="#999999", linewidth=0.8, linestyle="--")
+    reports = None
+    for contest, color in LATE_COUNT_MEASURES.items():
+        table = measure_trend(trend, contest)
+        reports = list(table.index)
+        ax.plot(reports, table["yes_pct"], color=color, marker="o", linewidth=2)
+        last = table.iloc[-1]
+        ax.annotate(
+            f"{contest} {last['yes_pct']:.1f}%",
+            (reports[-1], last["yes_pct"]),
+            textcoords="offset points",
+            xytext=(8, -3),
+            fontsize=8.5,
+            color=color,
+        )
+    ballots = measure_trend(trend, "Measure B")["ballots_counted"]
+    ax.axvline(5.5, color="#bbbbbb", linewidth=0.8)
+    ax.text(5.55, 60.6, "Counted after November 4 →", fontsize=7.5, color="#666666", va="top")
+    ax.set_xticks(reports)
+    ax.set_xticklabels([f"Report {r}\n{int(ballots.loc[r]) / 1000:.0f}k" for r in reports], fontsize=7.5)
+    ax.set_xlim(min(reports) - 0.3, max(reports) + 2.2)
+    ax.set_ylim(42, 61)
+    ax.set_ylabel("Yes share of Yes + No (%)")
+    ax.set_title(
+        "Late ballots raised the yes share on Measures B and I and lowered it on Measure D",
+        loc="left",
+        fontsize=11.5,
+        color="#1a1a1a",
+    )
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    fig.text(
+        0.01,
+        0.01,
+        f"Citywide yes share of counted Yes and No votes on each report, with ballots counted. San Francisco Department of Elections "
+        f"summary reports 1 and 4–{max(reports)}.\nReports 2 and 3 were not available for this pull.",
+        fontsize=6.5,
+        color="#666666",
+    )
+    fig.tight_layout(rect=(0, 0.07, 1, 1))
+    _finish(fig, path)
+
+
 def district_bars(
     frame: pd.DataFrame,
     column: str,
@@ -370,6 +418,46 @@ def geography_correlations(frame: pd.DataFrame, share: pd.Series, keep: pd.Serie
         },
         name="r",
     ).round(2)
+
+
+def late_count(frame: pd.DataFrame, slug: str, min_added: int = 30) -> dict:
+    """Yes share of the votes counted through Report 5 (November 4) and of the votes counted since.
+
+    A precinct is compared when it had at least MIN_BALLOTS votes on the measure by
+    Report 5 and at least min_added votes on it since.
+    """
+    yes, no = frame[f"{slug}__yes"].fillna(0), frame[f"{slug}__no"].fillna(0)
+    yes_early, no_early = frame[f"{slug}__yes_r5"].fillna(0), frame[f"{slug}__no_r5"].fillna(0)
+    yes_late, no_late = yes - yes_early, no - no_early
+    early, late = yes_early + no_early, yes_late + no_late
+    compared = (early >= MIN_BALLOTS) & (late >= min_added)
+    shift = 100 * (yes_late / late.where(late > 0) - yes_early / early.where(early > 0))
+    return {
+        "early_yes_pct": float(100 * yes_early.sum() / early.sum()),
+        "late_yes_pct": float(100 * yes_late.sum() / late.sum()),
+        "late_votes": int(late.sum()),
+        "precincts_compared": int(compared.sum()),
+        "precincts_more_yes": int((shift[compared] > 0).sum()),
+        "precincts_less_yes": int((shift[compared] < 0).sum()),
+        "median_shift_points": float(shift[compared].median()),
+    }
+
+
+def measure_trend(trend: pd.DataFrame, contest: str) -> pd.DataFrame:
+    """A measure's citywide count on each summary report, with the yes share of the votes each report added."""
+    table = (
+        trend[trend["contest"] == contest]
+        .pivot_table(index=["report", "folder", "ballots_counted"], columns="choice", values="votes")
+        .reset_index()
+        .sort_values("report")
+        .set_index("report")
+    )
+    table["yes_pct"] = 100 * table["YES"] / (table["YES"] + table["NO"])
+    table["margin"] = table["YES"] - table["NO"]
+    added = table[["YES", "NO"]].diff()
+    table["added_yes_pct"] = 100 * added["YES"] / (added["YES"] + added["NO"])
+    table["ballots_added"] = table["ballots_counted"].diff()
+    return table
 
 
 def on_map(frame: gpd.GeoDataFrame) -> gpd.GeoDataFrame:

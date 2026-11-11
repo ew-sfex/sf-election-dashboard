@@ -561,6 +561,11 @@ NOTEBOOKS = [
                 enough = data["ballots"] >= sf.MIN_BALLOTS
                 side_by_side = pd.DataFrame({"Measure B": sf.by_district(data, "measure_b__yes", "measure_b__no"), "Measure I": districts})
                 side_by_side["B minus I, points"] = side_by_side["Measure B"] - side_by_side["Measure I"]
+                gap = side_by_side["B minus I, points"]
+                check.fact("Measure I behind Measure B in every supervisor district", "every district",
+                           f"{int((gap > 0).sum())} of {len(gap)}", bool((gap > 0).all()))
+                check.number("Smallest district gap, B minus I, points", 2.4, gap.min())
+                check.number("Largest district gap, B minus I, points", 6.2, gap.max())
                 print("Precinct correlation of the B and I yes shares:", round(b_share[enough].corr(share[enough]), 2))
                 side_by_side.round(1)
                 """
@@ -658,6 +663,108 @@ NOTEBOOKS = [
                     check.number(f"Measure {letter} yes share, percent", yes_pct, row["yes_pct"])
                     check.number(f"Measure {letter} east-west r", east_west, row["east_west_r"], 2)
                     check.fact(f"Measure {letter} passing", "passing", f"{row['yes_pct']:.1f}% yes", row["yes_pct"] > 50)
+                """
+            ),
+        ],
+    },
+    {
+        "file": "09_late_count.ipynb",
+        "heading": "The late count",
+        "cells": [
+            md(
+                """
+                ## Ballots counted by November 4 and since
+
+                `source/precinct_results.csv` carries each precinct's Report 5 (November 4) votes on every
+                local measure, in the `__yes_r5` and `__no_r5` columns. The later votes are the Report 11
+                count minus the Report 5 count.
+                """
+            ),
+            code(
+                """
+                trend = pd.read_csv(ROOT / "source" / "citywide_trend.csv")
+                ballots = sf.measure_trend(trend, "Measure B")["ballots_counted"]
+                check.number("Ballots counted by November 4", 206320, ballots[5], 0)
+                check.number("Ballots counted since November 4", 145182, ballots[sf.REPORT_NUMBER] - ballots[5], 0)
+
+                late = pd.DataFrame({m: sf.late_count(data, f"measure_{m[-1].lower()}")
+                                     for m in ["Measure B", "Measure I", "Measure D", "Measure G"]}).T
+                for measure, early_pct, late_pct in [("Measure B", 49.96, 56.6), ("Measure I", 45.3, 52.8),
+                                                     ("Measure D", 57.5, 49.3), ("Measure G", 36.4, 31.3)]:
+                    places = 2 if measure == "Measure B" else 1
+                    check.number(f"{measure} yes share through November 4, percent", early_pct, late.loc[measure, "early_yes_pct"], places)
+                    check.number(f"{measure} yes share of votes counted since, percent", late_pct, late.loc[measure, "late_yes_pct"])
+                late.round(2)
+                """
+            ),
+            md("## The change inside precincts"),
+            code(
+                """
+                for measure, direction, count, compared in [("Measure B", "more", 439, 506), ("Measure I", "more", 463, 504),
+                                                            ("Measure D", "less", 474, 506), ("Measure G", "less", 419, 506)]:
+                    check.number(f"{measure}: precincts compared", compared, late.loc[measure, "precincts_compared"], 0)
+                    check.number(f"{measure}: precincts where later votes were {direction} yes", count,
+                                 late.loc[measure, f"precincts_{direction}_yes"], 0)
+                late[["precincts_compared", "precincts_more_yes", "precincts_less_yes", "median_shift_points"]]
+                """
+            ),
+            md("## Report by report"),
+            code(
+                """
+                tables = {m: sf.measure_trend(trend, m) for m in ["Measure B", "Measure I", "Measure D"]}
+                bands = {"Measure B": [(54.1, 56.2), (67.0, 69.5)], "Measure I": [(49.9, 52.4), (63.8, 67.9)],
+                         "Measure D": [(49.8, 50.7), (41.3, 43.4)]}
+                for measure, ((mid_low, mid_high), (end_low, end_high)) in bands.items():
+                    added = tables[measure]["added_yes_pct"]
+                    check.number(f"{measure}: lowest added yes share, November 5 to 7 reports", mid_low, added.loc[6:8].min())
+                    check.number(f"{measure}: highest added yes share, November 5 to 7 reports", mid_high, added.loc[6:8].max())
+                    check.number(f"{measure}: lowest added yes share, November 8 to 10 reports", end_low, added.loc[9:11].min())
+                    check.number(f"{measure}: highest added yes share, November 8 to 10 reports", end_high, added.loc[9:11].max())
+
+                b, i, d = tables["Measure B"], tables["Measure I"], tables["Measure D"]
+                first_lead = int(b.index[b["margin"] > 0][0])
+                check.fact("Measure B first led on", "Report 6 (November 5)", f"Report {first_lead}",
+                           first_lead == 6 and bool((b.loc[6:, "margin"] > 0).all()))
+                check.number("Ballots added by the November 5 report", 50062, b.loc[6, "ballots_added"], 0)
+                check.number("Measure B lead, votes", 17163, b["margin"].iloc[-1], 0)
+                check.fact("Measure I trailed on every report", "every report", f"{int((i['margin'] < 0).sum())} of {len(i)}",
+                           bool((i["margin"] < 0).all()))
+                check.number("Measure I No lead on November 4, votes", 18064, -i.loc[5, "margin"], 0)
+                check.number("Measure I No lead now, votes", 10686, -i["margin"].iloc[-1], 0)
+                check.fact("Measure D led on every report", "every report", f"{int((d['margin'] > 0).sum())} of {len(d)}",
+                           bool((d["margin"] > 0).all()))
+                check.number("Measure D yes share on election night, percent", 59.80, d.loc[1, "yes_pct"], 2)
+                check.number("Measure D yes share now, percent", 54.19, d["yes_pct"].iloc[-1], 2)
+                sf.late_count_chart(trend, None)
+                pd.concat({m: t[["ballots_counted", "yes_pct", "margin", "added_yes_pct"]] for m, t in tables.items()}, axis=1).round(2)
+                """
+            ),
+            md(
+                """
+                ## What it would take to flip
+
+                The Department has not said how many ballots remain. This assumes the rest break like the
+                votes added by the last two reports.
+                """
+            ),
+            code(
+                """
+                def last_two(table):
+                    added = table[["YES", "NO"]].iloc[-1] - table[["YES", "NO"]].iloc[-3]
+                    return added["YES"] / added.sum()
+
+                i_rate, d_rate = last_two(i), last_two(d)
+                i_needed = -i["margin"].iloc[-1] / (2 * i_rate - 1)
+                i_per_ballot = (i["YES"].iloc[-1] + i["NO"].iloc[-1]) / i["ballots_counted"].iloc[-1]
+                d_needed = d["margin"].iloc[-1] / (1 - 2 * d_rate)
+                check.number("Measure I yes share of votes added by the last two reports, percent", 65.5, 100 * i_rate)
+                check.number("Measure I votes needed to pull even, thousands", 34.6, i_needed / 1000)
+                check.number("Measure I votes per 100 ballots", 91.5, 100 * i_per_ballot)
+                check.number("Ballots needed for Measure I, thousands", 37.8, i_needed / i_per_ballot / 1000)
+                check.number("Ballots added by the second-to-last report", 5094, b["ballots_added"].iloc[-2], 0)
+                check.number("Ballots added by the last report", 3564, b["ballots_added"].iloc[-1], 0)
+                check.number("Measure D yes share of votes added by the last two reports, percent", 42.6, 100 * d_rate)
+                check.number("Measure D votes needed to fall behind, thousands", 186, d_needed / 1000, 0)
                 """
             ),
         ],
