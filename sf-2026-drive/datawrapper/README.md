@@ -17,10 +17,10 @@ The vote columns and the census percentage columns are there for tooltips. Censu
 
 ## Bar charts
 
-`districts.csv` has one row per supervisor district, 1 through 11. `chan_pct` uses only the CA-11 precincts in that district. Supervisor District 11 contributes only 1,784 votes to CA-11, because most of it is in CA-15.
+`districts.csv` has one row per supervisor district, 1 through 11. Use `district_label` ("District 1") for bar labels. `chan_pct` uses only the CA-11 precincts in that district. Supervisor District 11 contributes only 1,784 votes to CA-11, because most of it is in CA-15.
 
 ## Late count
 
-`trend.csv` has one row per summary report (1 and 4 through the latest) with the citywide yes share of Measures B, I, and D, two decimals so Report 5's 49.96 doesn't round to 50. Use a line chart with a reference line at 50.
+`trend.csv` has one row per summary report (1 and 4 through the latest) with the citywide yes share of Measures B, I, and D, two decimals so Report 5's 49.96 doesn't round to 50. `date_label` is the release date ("Nov. 5"); Reports 1 and 4 both came out on election night and read "Nov. 3, first" and "Nov. 3, last". Datawrapper line charts need numbers or dates on the x-axis, so plot against `report` and put `date_label` in the tooltip and axis note; `label` combines both. Use a line chart with a reference line at 50.
 
 `late_count.csv` has the yes share of Measures B, I, D, and G among votes counted by November 4 (Report 5) and among votes counted since, two decimals so Measure B's 49.96 doesn't read as 50. Use a grouped bar or arrow chart.

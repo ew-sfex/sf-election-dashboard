@@ -1,10 +1,10 @@
-report,label,ballots_counted,measure_b_yes_pct,measure_i_yes_pct,measure_d_yes_pct
-1,"Report 1, Nov. 3",154364,48.46,43.46,59.8
-4,"Report 4, Nov. 3",185032,49.82,45.03,57.75
-5,"Report 5, Nov. 4",206320,49.96,45.26,57.54
-6,"Report 6, Nov. 5",256382,51.16,46.63,56.05
-7,"Report 7, Nov. 6",307917,51.65,47.17,55.1
-8,"Report 8, Nov. 7",332467,51.87,47.44,54.78
-9,"Report 9, Nov. 8",342844,52.31,47.94,54.46
-10,"Report 10, Nov. 9",347938,52.51,48.16,54.31
-11,"Report 11, Nov. 10",351502,52.67,48.34,54.19
+report,date_label,label,ballots_counted,measure_b_yes_pct,measure_i_yes_pct,measure_d_yes_pct
+1,"Nov. 3, first","Report 1, Nov. 3, first",154364,48.46,43.46,59.8
+4,"Nov. 3, last","Report 4, Nov. 3, last",185032,49.82,45.03,57.75
+5,Nov. 4,"Report 5, Nov. 4",206320,49.96,45.26,57.54
+6,Nov. 5,"Report 6, Nov. 5",256382,51.16,46.63,56.05
+7,Nov. 6,"Report 7, Nov. 6",307917,51.65,47.17,55.1
+8,Nov. 7,"Report 8, Nov. 7",332467,51.87,47.44,54.78
+9,Nov. 8,"Report 9, Nov. 8",342844,52.31,47.94,54.46
+10,Nov. 9,"Report 10, Nov. 9",347938,52.51,48.16,54.31
+11,Nov. 10,"Report 11, Nov. 10",351502,52.67,48.34,54.19
