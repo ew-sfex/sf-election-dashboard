@@ -1,0 +1,57 @@
+{
+  "folderId": 460673,
+  "charts": {
+    "trend": {
+      "id": "tS6EZ",
+      "title": "The late count changed the local measures.",
+      "type": "d3-lines",
+      "editUrl": "https://app.datawrapper.de/chart/tS6EZ/visualize"
+    },
+    "late": {
+      "id": "mtu14",
+      "title": "The late count changed the local measures.",
+      "type": "d3-arrow-plot",
+      "editUrl": "https://app.datawrapper.de/chart/mtu14/visualize"
+    },
+    "measure_g": {
+      "id": "vde2o",
+      "title": "Measure G lost even on the ocean side.",
+      "type": "d3-maps-choropleth",
+      "editUrl": "https://app.datawrapper.de/chart/vde2o/visualize"
+    },
+    "chan": {
+      "id": "TZhOn",
+      "title": "CA-11 split the west side from the north.",
+      "type": "d3-maps-choropleth",
+      "editUrl": "https://app.datawrapper.de/chart/TZhOn/visualize"
+    },
+    "hilton": {
+      "id": "Oxbul",
+      "title": "Hilton ran strongest in the west and south.",
+      "type": "d3-bars",
+      "editUrl": "https://app.datawrapper.de/chart/Oxbul/visualize"
+    },
+    "measure_b": {
+      "id": "g4y6g",
+      "title": "Measures B and I drew on the same parts of the city.",
+      "type": "d3-maps-choropleth",
+      "editUrl": "https://app.datawrapper.de/chart/g4y6g/visualize"
+    },
+    "measure_i": {
+      "id": "WiTcr",
+      "title": "Measures B and I drew on the same parts of the city.",
+      "type": "d3-maps-choropleth",
+      "editUrl": "https://app.datawrapper.de/chart/WiTcr/visualize"
+    },
+    "measure_d": {
+      "id": "sU2aV",
+      "title": "Measure D split north and south, not east and west.",
+      "type": "d3-maps-choropleth",
+      "editUrl": "https://app.datawrapper.de/chart/sU2aV/visualize"
+    }
+  },
+  "folderName": "SF 2026 precinct findings",
+  "organizationId": "TmK4eKmz",
+  "basemap": "usa-sanfran-prescincts-2022",
+  "reportNumber": 11
+}

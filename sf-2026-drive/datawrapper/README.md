@@ -24,3 +24,9 @@ The vote columns and the census percentage columns are there for tooltips. Censu
 `trend.csv` has one row per summary report (1 and 4 through the latest) with the citywide yes share of Measures B, I, and D, two decimals so Report 5's 49.96 doesn't round to 50. `date_label` is the release date ("Nov. 5"); Reports 1 and 4 both came out on election night and read "Nov. 3, first" and "Nov. 3, last". Datawrapper line charts need numbers or dates on the x-axis, so plot against `report` and put `date_label` in the tooltip and axis note; `label` combines both. Use a line chart with a reference line at 50.
 
 `late_count.csv` has the yes share of Measures B, I, D, and G among votes counted by November 4 (Report 5) and among votes counted since, two decimals so Measure B's 49.96 doesn't read as 50. Use a grouped bar or arrow chart.
+
+## Drafts
+
+Unpublished drafts of the charts in `analysis/REPORTER_MEMO.md` are refreshed by `analysis/refresh_datawrapper.py`. Maps use Datawrapper's built-in San Francisco precincts (2022), joined to `precinct_id` on `Prec_2022`. Upload that id as text. A number-typed column matches nothing on this basemap, and the API does not accept `precincts.geojson`.
+
+For Report 12, update `REPORT_NUMBER` in `analysis/sf2026.py`, regenerate this folder, then run `python analysis/refresh_datawrapper.py`. The script reads `DATAWRAPPER_API_TOKEN` from the environment and does not publish. Chart ids and edit links are in `analysis/datawrapper_charts.json`.
