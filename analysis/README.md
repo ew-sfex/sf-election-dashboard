@@ -34,6 +34,6 @@ Report 11, unless a filename says otherwise. Precincts under 50 ballots are hatc
 - `turnout.png`, `mail_share.png`
 - `governor_hilton.png`, `governor_by_district.png` — San Francisco votes only
 - `ca11_chan.png`, `ca11_by_district.png` — CA-11 precincts only
-- `measure_b_yes.png`, `measure_b_by_district.png`. `measure_b_trend.png` and `measure_b_ballots_after_nov4.png` are the canvass path for that one measure
+- `measure_b_yes.png`, `measure_b_by_district.png`. `measure_b_trend.png` is the canvass path for that one measure, and `late_count_trend.png` shows Measures B, I, and D on every report
 - `measure_g_yes.png`, `measure_i_yes.png`, `measure_d_yes.png` — the other local measures that are either close or sharply east-west
 - Census scatters, after `apportion_census.py`: Measure B against renters and against Hispanic share, CA-11 against Asian share, the governor’s race against Asian share, Measure G against Asian share, turnout against bachelor’s degrees

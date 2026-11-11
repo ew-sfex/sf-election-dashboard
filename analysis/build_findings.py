@@ -26,6 +26,7 @@ from sf2026 import (
     choropleth,
     district_bars,
     district_lines,
+    late_count_chart,
     line_chart,
     screen_measures,
     symmetric_limits,
@@ -271,6 +272,7 @@ def main() -> None:
     trend = pd.concat(trend_frames, ignore_index=True)
     trend.to_csv(OUT / "citywide_trend.csv", index=False)
     line_chart(trend, FIG / "measure_b_trend.png")
+    late_count_chart(trend, FIG / "late_count_trend.png")
 
     gdf = load_precincts(paths["geo"], paths["crosswalk"])
 
@@ -307,12 +309,11 @@ def main() -> None:
             gdf[f"{slug}__yes"], gdf[f"{slug}__yes"].fillna(0) + gdf[f"{slug}__no"].fillna(0)
         )
 
-    early_b = _pivot_contest(early, "Measure B").rename(columns={"YES": "yes_r5", "NO": "no_r5"})
-    gdf = gdf.merge(early_b[["precinct_id", "yes_r5", "no_r5"]], on="precinct_id", how="left")
-    gdf["yes_added"] = gdf["measure_b__yes"].fillna(0) - gdf["yes_r5"].fillna(0)
-    gdf["no_added"] = gdf["measure_b__no"].fillna(0) - gdf["no_r5"].fillna(0)
-    gdf["added_ballots"] = gdf["yes_added"] + gdf["no_added"]
-    gdf["added_yes_share"] = _share(gdf["yes_added"], gdf["added_ballots"])
+    # Report 5 (November 4) precinct votes, for comparing early and late ballots.
+    for contest in local:
+        slug = re.sub(r"[^a-z0-9]+", "_", contest.lower()).strip("_")
+        wide = _pivot_contest(early, contest).rename(columns={"YES": f"{slug}__yes_r5", "NO": f"{slug}__no_r5"})
+        gdf = gdf.merge(wide[["precinct_id", f"{slug}__yes_r5", f"{slug}__no_r5"]], on="precinct_id", how="left")
 
     def hide_small(column: str, ballots: pd.Series, mask: pd.Series | None = None) -> pd.Series:
         show = ballots.fillna(0) >= MIN_BALLOTS
@@ -332,7 +333,6 @@ def main() -> None:
     gdf["measure_b_mapped"] = hide_small(
         "measure_b_yes_share", gdf["measure_b__yes"].fillna(0) + gdf["measure_b__no"].fillna(0)
     )
-    gdf["added_mapped"] = gdf["added_yes_share"].where(gdf["added_ballots"] >= 30)
     # Four precincts have no registered voters: Angel Island (9904), Alameda
     # Island (9903), and two small inland ones in Outer Mission (9901) and
     # Portola (9902). They stay in the data file and come off the maps; the
@@ -406,20 +406,6 @@ def main() -> None:
         vcenter=0.50,
         districts=districts,
     )
-    choropleth(
-        map_gdf,
-        "added_mapped",
-        FIG / "measure_b_ballots_after_nov4.png",
-        "Measure B: yes share of ballots counted after November 4",
-        f"Votes added between Report 5 (No still ahead) and Report {REPORT_NUMBER}. Precincts with fewer than 30 added votes are hatched gray.",
-        "Yes share of added votes",
-        "BrBG",
-        *symmetric_limits(gdf["added_mapped"]),
-        vcenter=0.50,
-        districts=districts,
-        missing_label="Fewer than 30 added votes",
-    )
-
     # Every local measure varies by supervisor district. Map the close ones and
     # the one with a strong east-west break. The full comparison stays in the CSV.
     extra = screening[
@@ -500,7 +486,14 @@ def main() -> None:
                 & (summary["choice"] == "NO")
             ]["votes"].sum()
         ),
-        "negative_added_precincts": int((gdf["added_ballots"] < 0).sum()),
+        "precincts_with_fewer_votes_than_report_5": sorted(
+            {
+                int(p)
+                for c in gdf.columns
+                if c.endswith("__yes_r5") or c.endswith("__no_r5")
+                for p in gdf.loc[gdf[c].fillna(0) > gdf[c[: -len("_r5")]].fillna(0), "precinct_id"]
+            }
+        ),
     }
     (OUT / "join_qc.json").write_text(json.dumps(qc, indent=2))
 
@@ -527,13 +520,11 @@ def main() -> None:
         "measure_b__yes",
         "measure_b__no",
         "measure_b_yes_share",
-        "yes_added",
-        "no_added",
-        "added_ballots",
-        "added_yes_share",
         "geometry",
     ]
-    extra_cols = [c for c in gdf.columns if c.endswith("_yes_share") or c.endswith("__yes") or c.endswith("__no")]
+    extra_cols = [
+        c for c in gdf.columns if c.endswith(("_yes_share", "__yes", "__no", "__yes_r5", "__no_r5"))
+    ]
     export_cols = list(dict.fromkeys(keep_cols + extra_cols))
     gdf[export_cols].to_file(OUT / "precincts.geojson", driver="GeoJSON")
     gdf.drop(columns="geometry")[ [c for c in export_cols if c != "geometry"] ].to_csv(

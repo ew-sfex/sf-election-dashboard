@@ -5,5 +5,5 @@
   "sov_precincts_missing_a_shape": [],
   "reconciliation_max_abs_difference": 0,
   "cumulative_votes_measure_b": 0,
-  "negative_added_precincts": 0
+  "precincts_with_fewer_votes_than_report_5": []
 }
