@@ -5,7 +5,9 @@ Run after run_all.py, from the repository root:
     python analysis/build_drive.py
 
 FINDINGS.md, the figures it shows, the notebooks' source files, the measure
-screen, and the shared sf2026.py are copied from the analysis. The section
+screen, and the shared sf2026.py are copied from the analysis. REPORTER_MEMO.md
+is copied too, and the build stops if it quotes a number FINDINGS.md doesn't,
+since only FINDINGS.md numbers are checked by the notebooks. The section
 notebooks are regenerated and run by build_notebooks.py, and the Datawrapper
 files are rewritten by running export_datawrapper.ipynb. The hand-written
 READMEs and the export notebook itself are left alone.
@@ -57,6 +59,15 @@ def referenced_paths(text: str) -> list[str]:
     return images + code_paths
 
 
+NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
+
+
+def unchecked_numbers(memo: str, findings: str) -> list[str]:
+    """Numbers in the reporter memo that FINDINGS.md never states."""
+    known = {n.rstrip(",") for n in NUMBER.findall(findings)}
+    return sorted({n.rstrip(",") for n in NUMBER.findall(memo)} - known)
+
+
 def run_notebook() -> None:
     notebook = json.loads((DRIVE / "notebooks" / "export_datawrapper.ipynb").read_text())
     code = "\n\n".join(
@@ -102,6 +113,15 @@ def main() -> None:
     missing = [p for p in referenced_paths(findings) if not (DRIVE / p).exists()]
     if missing:
         raise SystemExit(f"FINDINGS.md in the Drive folder points to files it does not have: {missing}")
+
+    memo = (ROOT / "REPORTER_MEMO.md").read_text(encoding="utf-8")
+    unchecked = unchecked_numbers(memo, findings)
+    if unchecked:
+        raise SystemExit(f"REPORTER_MEMO.md quotes numbers FINDINGS.md does not: {unchecked}")
+    (DRIVE / "REPORTER_MEMO.md").write_text(memo, encoding="utf-8")
+    missing = [p for p in referenced_paths(memo) if not (DRIVE / p).exists()]
+    if missing:
+        raise SystemExit(f"REPORTER_MEMO.md points to files the Drive folder does not have: {missing}")
 
     build_notebooks(DRIVE, ROOT / "FINDINGS.md")
     run_notebook()
