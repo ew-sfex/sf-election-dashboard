@@ -20,6 +20,8 @@ import pandas as pd
 from parse_sov import parse_sov, parse_summary_xml, reconcile
 from sf2026 import (
     MIN_BALLOTS,
+    REPORT_FOLDER,
+    REPORT_NUMBER,
     census_scatter,
     choropleth,
     district_bars,
@@ -44,8 +46,10 @@ SUMMARY_FOLDERS = [
     "20261106",
     "20261107",
     "20261108",
+    "20261109",
+    "20261110",
 ]
-LATEST_SOV = "20261108/sov.xlsx"
+LATEST_SOV = f"{REPORT_FOLDER}/sov.xlsx"
 EARLY_SOV = "20261104/sov.xlsx"  # Report 5, the last report with No ahead on Measure B
 GEOJSON_URL = "https://data.sfgov.org/api/v3/views/d6x4-hefw/query.geojson?accessType=DOWNLOAD"
 CROSSWALK_URL = (
@@ -70,7 +74,7 @@ def _download(url: str, dest: Path) -> None:
 def fetch_inputs() -> dict[str, Path]:
     RAW.mkdir(parents=True, exist_ok=True)
     paths = {
-        "sov": RAW / "sov_20261108.xlsx",
+        "sov": RAW / f"sov_{REPORT_FOLDER}.xlsx",
         "sov_early": RAW / "sov_20261104.xlsx",
         "geo": RAW / "precincts.geojson",
         "crosswalk": RAW / "precinct_crosswalk.xlsx",
@@ -316,7 +320,9 @@ def main() -> None:
             show = show & mask.fillna(False)
         return gdf[column].where(show)
 
-    gdf["turnout_mapped"] = hide_small("turnout", gdf["ballots"])
+    # A precinct can report more ballots than registered voters (9723 on Report 11).
+    # That rate isn't a turnout, so it is left off the turnout map.
+    gdf["turnout_mapped"] = hide_small("turnout", gdf["ballots"]).where(gdf["ballots"] <= gdf["registered"])
     gdf["mail_mapped"] = hide_small("mail_share", gdf["ballots"])
     gdf["hilton_mapped"] = hide_small("hilton_share", gdf["hilton"].fillna(0) + gdf["becerra"].fillna(0))
     in_ca11 = gdf["Congressional"] == 11
@@ -343,12 +349,13 @@ def main() -> None:
         "turnout_mapped",
         FIG / "turnout.png",
         "Turnout by precinct",
-        "Ballots counted divided by registered voters. Precincts under 50 ballots are hatched gray.",
+        "Ballots counted divided by registered voters. Hatched gray precincts cast under 50 ballots or report more ballots than voters.",
         "Turnout",
         "YlGnBu",
         vmin=0.25,
-        vmax=0.85,
+        vmax=0.90,
         districts=districts,
+        missing_label="Fewer than 50 ballots, or more ballots than registered voters",
     )
     choropleth(
         map_gdf,
@@ -358,7 +365,7 @@ def main() -> None:
         "Mail ballots divided by ballots cast. Citywide, mail is about 89% of the count.",
         "Mail share",
         "PuBu",
-        vmin=0.55,
+        vmin=0.35,
         vmax=1.0,
         districts=districts,
     )
@@ -404,7 +411,7 @@ def main() -> None:
         "added_mapped",
         FIG / "measure_b_ballots_after_nov4.png",
         "Measure B: yes share of ballots counted after November 4",
-        "Votes added between Report 5 (No still ahead) and Report 9. Precincts with fewer than 30 added votes are hatched gray.",
+        f"Votes added between Report 5 (No still ahead) and Report {REPORT_NUMBER}. Precincts with fewer than 30 added votes are hatched gray.",
         "Yes share of added votes",
         "BrBG",
         *symmetric_limits(gdf["added_mapped"]),
