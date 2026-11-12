@@ -18,9 +18,9 @@ Census characteristics are 2020 block counts, or ACS 2020–2024 counts spread o
 
 Xavier Becerra 287,632, Steve Hilton 51,897. Hilton’s share of the two-candidate vote is 15.3 percent.
 
-Precinct shares run from 7.0 percent to 15.4 percent to 25.4 percent. The higher shares are on the west side and in the south. Supervisor District 4 is 23.6 percent Hilton and District 11 is 20.7 percent. District 2 is 18.5 percent and District 7 is 17.1 percent. District 8 is 7.5 percent, District 9 is 9.8 percent, and District 5 is 10.0 percent. The spread from District 8 to District 4 is 16.1 points.
+Precinct shares run from 7.0 percent to 15.4 percent to 25.4 percent. The higher shares are in two kinds of places. Sunset/Parkside is 23.6 percent, Portola is 24.5 percent, and Visitacion Valley is 25.2 percent. The Marina is 23.3 percent. Supervisor District 4 is 23.6 percent Hilton and District 11 is 20.7 percent. District 2 is 18.5 percent and District 7 is 17.1 percent. District 8 is 7.5 percent, District 9 is 9.8 percent, and District 5 is 10.0 percent. The spread from District 8 to District 4 is 16.1 points. District 9 is low because the Mission precincts in it are 7.8 percent and the Bernal Heights precincts in it are 7.2 percent. The Portola precincts in District 9 are 24.5 percent. The Marina is in District 2.
 
-Hilton’s share rises with the non-Hispanic Asian share of the precinct (r = 0.69) and with the foreign-born share (r = 0.54). It is lower where the non-Hispanic white share is higher (r = −0.44) and where the renter share is higher (r = −0.39).
+Hilton’s share rises with the non-Hispanic Asian share of the precinct (r = 0.69). The foreign-born share and the non-Hispanic white share move with the Asian share (r = 0.77 and r = −0.72). Holding the Asian share constant, the foreign-born correlation with Hilton’s share is 0.01 and the white-share correlation is 0.10. The renter correlation is −0.39, and −0.22 with the Asian share held constant. The Marina is 12 percent Asian and 73 percent white.
 
 ![Steve Hilton's share inside San Francisco](figures/governor_hilton.png)
 
