@@ -11,7 +11,7 @@ Raw downloads go in `analysis/raw/` and are not committed. Tables and figures la
 
 ## Sources
 
-- Statement of the Vote, Preliminary Report 11 (November 10, 2026, 4:00 p.m. Pacific), plus Report 5 (November 4) for the Measure B comparison. Citywide trend uses summary reports 1 and 4 through 11. To move to a later report, change `REPORT_NUMBER`, `REPORT_FOLDER`, and `REPORT_RELEASED` in `sf2026.py`, add the folder to `SUMMARY_FOLDERS` in `build_findings.py`, and rerun. The section notebooks then list every memo number that moved.
+- Statement of the Vote, Preliminary Report 11 (November 10, 2026, 4:00 p.m. Pacific), plus Report 5 (November 4) for the Measure B comparison. Citywide trend uses summary reports 1 and 4 through 11. To move to a later report, change `REPORT_NUMBER`, `REPORT_FOLDER`, and `REPORT_RELEASED` in `sf2026.py`, add the folder to `SUMMARY_FOLDERS` in `build_findings.py`, and rerun. Then run `python analysis/refresh_datawrapper.py` to update the unpublished Datawrapper drafts. It reads `DATAWRAPPER_API_TOKEN` from the environment and does not publish. The section notebooks then list every memo number that moved.
 - Precinct shapes: DataSF “Election Precincts — Current, Defined 2022” (`d6x4-hefw`). 514 polygons, one per reporting precinct. The join on precinct number is exact.
 - District and neighborhood names: Department of Elections crosswalk `N26_ConsolDistBT_20260817.xlsx` (August 17, 2026). Use this, not the 2022 district fields on the shapes, for congressional and supervisor district.
 - Four precincts have no registered voters: Angel Island (`9904`), Alameda Island (`9903`), and two small inland precincts, `9901` (Outer Mission) and `9902` (Portola). They stay in the data file and are left off the maps.
