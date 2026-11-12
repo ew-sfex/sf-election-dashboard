@@ -329,6 +329,20 @@ NOTEBOOKS = [
                 {range_check(7.0, 15.4, 25.4)}
                 {district_checks("Hilton share", {4: 23.6, 11: 20.7, 2: 18.5, 7: 17.1, 8: 7.5, 9: 9.8, 5: 10.0})}
                 {spread_check(4, 8, 16.1)}
+                neighborhoods = sf.by_neighborhood(data, "hilton", "becerra")
+                check.number("Sunset/Parkside", 23.6, neighborhoods["SUNSET/PARKSIDE"])
+                check.number("Portola", 24.5, neighborhoods["PORTOLA"])
+                check.number("Visitacion Valley", 25.2, neighborhoods["VISITACION VALLEY"])
+                check.number("Marina", 23.3, neighborhoods["MARINA"])
+                district_9 = sf.by_neighborhood(data[data["Supervisorial"] == 9], "hilton", "becerra")
+                check.number("Mission precincts in District 9", 7.8, district_9["MISSION"])
+                check.number("Bernal Heights precincts in District 9", 7.2, district_9["BERNAL HEIGHTS"])
+                check.number("Portola precincts in District 9", 24.5, district_9["PORTOLA"])
+                marina = data[data["Neighborhood"] == "MARINA"]
+                check.number("Marina, non-Hispanic Asian share of residents, percent", 12,
+                             100 * marina["nh_asian"].sum() / marina["pop"].sum(), 0)
+                check.number("Marina, non-Hispanic white share of residents, percent", 73,
+                             100 * marina["nh_white"].sum() / marina["pop"].sum(), 0)
                 """
             ),
             code(
@@ -343,8 +357,18 @@ NOTEBOOKS = [
             md("## Census comparison"),
             code(
                 f"""
-                {census_checks({"Non-Hispanic Asian": 0.69, "Foreign born": 0.54, "Non-Hispanic white": -0.44, "Renters": -0.39})}
+                {census_checks({"Non-Hispanic Asian": 0.69, "Renters": -0.39})}
                 keep = sf.census_frame(data)
+                check.number("Foreign-born share with the Asian share", 0.77,
+                             sf.column_correlation(data, share, keep, "foreign_born_share", "nh_asian_share"), 2)
+                check.number("White share with the Asian share", -0.72,
+                             sf.column_correlation(data, share, keep, "nh_white_share", "nh_asian_share"), 2)
+                check.number("Foreign-born correlation, Asian share held constant", 0.01,
+                             sf.partial_correlation(data, share, keep, "foreign_born_share", "nh_asian_share"), 2)
+                check.number("White correlation, Asian share held constant", 0.10,
+                             sf.partial_correlation(data, share, keep, "nh_white_share", "nh_asian_share"), 2)
+                check.number("Renter correlation, Asian share held constant", -0.22,
+                             sf.partial_correlation(data, share, keep, "renter_share", "nh_asian_share"), 2)
                 sf.census_scatter(data[keep].assign(share=share[keep]), "share", "nh_asian_share", None,
                                   "Governor and Asian population", "Non-Hispanic Asian share of 2020 population",
                                   "Steve Hilton share of the two-candidate vote (%)");

@@ -6,7 +6,7 @@
 >
 > | Write this | Not this |
 > | --- | --- |
-> | Hilton ran strongest in precincts with more Asian and foreign-born residents. | Asian voters backed Hilton. / Immigrants swung to Hilton. |
+> | Hilton ran stronger in precincts with more Asian residents. | Asian voters backed Hilton. / Immigrants swung to Hilton. |
 > | Measure B did best in precincts with more Hispanic residents and more renters. | Latino voters and renters passed Measure B. |
 > | Ballots counted later were more favorable to Measure B than those counted first. | Young voters / progressives carried Measure B late. |
 
@@ -15,7 +15,7 @@
 1. **The late count changed the local measures.** Ballots counted after November 4 were more yes on Measures B and I and more no on Measures D and G, in the large majority of precincts. That moved Measure B from trailing to leading and cut Measure I's deficit, but not by enough.
 2. **Measure G lost even on the ocean side.** The Great Highway measure is at 34.3 percent yes. The two districts along the ocean were its best, and both were still under half: District 1 at 49.6 percent and District 4 at 49.4 percent.
 3. **CA-11 split the west side from the north.** Scott Wiener leads Connie Chan 53.3 percent to 46.7 percent. Chan leads in the Sunset, the Outer Richmond, the Mission, Bayview, and Chinatown. Wiener leads in the Inner Richmond, the Castro, Noe Valley, and most of the north side, from the Marina to Pacific Heights.
-4. **Hilton ran strongest in the west and south.** Steve Hilton has 15.3 percent of the two-candidate vote in the city, from 23.6 percent in District 4 down to 7.5 percent in District 8.
+4. **Hilton's higher shares are in the Sunset, the south, and the Marina.** He has 15.3 percent of the two-candidate vote in the city. Sunset/Parkside is 23.6 percent, Visitacion Valley is 25.2 percent, and the Marina is 23.3 percent. District 9 is 9.8 percent, and the Portola precincts in it are 24.5 percent. District 8 is 7.5 percent.
 5. **Measures B and I drew on the same parts of the city.** Both were strongest in the center and the east, and both did best in District 9. Measure I ran behind B in every supervisor district, by 2.4 to 6.2 points, and is trailing.
 6. **Measure D split north and south, not east and west.** It is 67.5 percent yes in District 2 and under half in four districts: 9, 11, 4, and 5.
 
@@ -62,7 +62,8 @@ Report 5, released November 4, was the last report with No ahead on Measure B. S
 - Xavier Becerra 287,632, Steve Hilton 51,897. Hilton has 15.3 percent of the two-candidate vote.
 - **Strongest districts:** District 4 at 23.6 percent and District 11 at 20.7 percent.
 - **Weakest districts:** District 8 at 7.5 percent, then District 9 at 9.8 percent and District 5 at 10.0 percent.
-- **Census pattern:** Hilton ran stronger in precincts with more Asian residents and more foreign-born residents.
+- **Where:** Sunset/Parkside is 23.6 percent, Visitacion Valley is 25.2 percent, and the Marina is 23.3 percent. The Marina is in District 2. District 9 is 9.8 percent because the Mission precincts in it are 7.8 percent and the Bernal Heights precincts in it are 7.2 percent. The Portola precincts in District 9 are 24.5 percent.
+- **Census pattern:** Hilton ran stronger in precincts with a higher Asian share. The foreign-born and white-share correlations are that same pattern.
 - This section is where the warning at the top matters most. Hilton's precinct shares run from 7.0 percent to 15.4 percent to 25.4 percent (10th, 50th, and 90th percentiles), so in nine of ten precincts Becerra had about three-quarters of the vote or more.
 
 ## Measures B and I

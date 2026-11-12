@@ -409,6 +409,42 @@ def census_correlations(frame: pd.DataFrame, share: pd.Series, keep: pd.Series) 
     return pd.Series(rows, name="r").round(2)
 
 
+def _census_rows(frame: pd.DataFrame, share: pd.Series, keep: pd.Series, columns: list[str]) -> pd.DataFrame:
+    """Precincts in keep with a share and the named census columns."""
+    subset = frame.loc[keep, list(columns)].copy()
+    subset["_share"] = share.reindex(subset.index)
+    return subset.dropna()
+
+
+def column_correlation(
+    frame: pd.DataFrame, share: pd.Series, keep: pd.Series, left: str, right: str
+) -> float:
+    """Pearson r of two census columns, on the precincts used for a share correlation."""
+    subset = _census_rows(frame, share, keep, [left, right])
+    return float(subset[left].corr(subset[right]))
+
+
+def partial_correlation(
+    frame: pd.DataFrame, share: pd.Series, keep: pd.Series, column: str, control: str
+) -> float:
+    """Correlation of a census column with the share after a linear control.
+
+    The rows are the census comparison set with a non-missing share. This is how the
+    governor section checks that the foreign-born and white correlations are the
+    Asian-share pattern.
+    """
+    subset = _census_rows(frame, share, keep, [column, control])
+
+    def residuals(target: pd.Series, control_values: pd.Series) -> pd.Series:
+        centered = control_values - control_values.mean()
+        slope = (centered * (target - target.mean())).sum() / (centered ** 2).sum()
+        intercept = target.mean() - slope * control_values.mean()
+        return target - (intercept + slope * control_values)
+
+    controlled = subset[control]
+    return float(residuals(subset["_share"], controlled).corr(residuals(subset[column], controlled)))
+
+
 def geography_correlations(frame: pd.DataFrame, share: pd.Series, keep: pd.Series) -> pd.Series:
     """Correlation of a precinct share with east-west and north-south position."""
     return pd.Series(
